@@ -1,6 +1,6 @@
-# Azure Speech SDK CRL Partition Test Report
+# Azure Speech SDK CRL Disable Test Report
 
-Date: 2026-05-19T13:54:03+08:00
+Date: 2026-05-19T14:29:59+08:00
 Repository: https://github.com/shawnq-msft/test-speech-sdk-crl-partition
 Local path: `/home/qiushuo/src/test-speech-sdk-crl-partition`
 Branch: `main`
@@ -8,15 +8,21 @@ Speech SDK version: `azure-cognitiveservices-speech==1.40.0`
 
 ## Purpose
 
-This report captures an authentic Azure Speech SDK run of the CRL partition reproduction scenario.
+This report captures an authentic Azure Speech SDK run for the CRL behavior described in the Microsoft Learn migration note:
 
-The scenario models a service certificate rotation where:
+https://learn.microsoft.com/en-us/azure/ai-services/speech-service/migrate-to-sdk-1-48-2?tabs=csharp
 
-1. The client first connects to a mock Speech endpoint serving a certificate with CDP `partition1.crl`.
-2. The mock service rotates to a new certificate with CDP `partition2.crl`.
-3. The old CRL partition is blocked.
-4. The client reconnects with Azure Speech SDK 1.40.0.
-5. Recovery is tested with `OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE=true`.
+The referenced guidance says that SDKs before 1.48.2 can fail on Linux/Android when CRL handling hits incompatible or unavailable CRLs, and that an immediate workaround is to set this SpeechConfig property:
+
+```python
+speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")
+```
+
+This run validates that behavior with the mock Speech endpoint in this repository:
+
+1. Reproduce the SDK/OpenSSL rejection with CRL checking enabled.
+2. Set `OPENSSL_DISABLE_CRL_CHECK=true`.
+3. Try the same endpoint again and confirm the SDK connects.
 
 ## Environment
 
@@ -38,253 +44,210 @@ python3 -m venv .venv
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 bash scripts/setup_all.sh
-python src/reproduce.py --use-sdk
+python src/repro_disable_crl.py --timeout 10
 ```
 
-The captured SDK log is also stored separately at:
+Captured logs:
 
 ```text
-reports/logs/speech_sdk.log
+reports/logs/speech_sdk_disable_crl_repro.log
+reports/logs/sdk-native-after-rotation-crl-enabled.log
+reports/logs/sdk-native-after-rotation-crl-disabled.log
 ```
 
 ## Test steps and observations
 
 ### Phase 0: Precondition check
 
-The test confirmed all required PKI artifacts were present, then cleared the local CRL cache directory:
+The test confirmed required PKI artifacts were present, cleared the local CRL cache directory, and started the two local services:
 
 ```text
 All PKI artifacts present ✓
 Cleared CRL cache: /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache
-```
-
-### Phase 1: Start servers with partition1 certificate
-
-The CRL server started on port 9000 and the mock Speech server started on port 8443 with the partition1 certificate:
-
-```text
 CRL server ready on port 9000
 Speech server ready on port 8443 (partition1)
 ```
 
-### Phase 2: Initial SDK connection attempt
+### Phase 1: SDK attempt with CRL checking enabled
 
-The SDK attempted to connect to:
-
-```text
-wss://localhost:8443
-```
-
-The environment for the attempt was:
+The SDK attempted to connect to the mock Speech endpoint with default CRL checking enabled:
 
 ```text
 SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
 TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
 Speech SDK version: 1.40.0
+Connecting to: wss://localhost:8443
+SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-initial-crl-enabled.log
+Starting connection attempt...
+Connection timed out after 10.0s
 ```
 
-Result:
+The native SDK log shows OpenSSL CRL checking was enabled and the SDK failed in the underlying WebSocket/TLS open path:
 
 ```text
-Connection timed out after 10.0s
-CRL server requests so far: 5
+tlsio_openssl.c:1882 CRL check enabled.
+tlsio_openssl.c:1030 Error loading CRL from http://localhost:9000/crl/partition1.crl
+tlsio_openssl.c:1624 Unable to retrieve CRL, CRL check may fail.
+tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d]
+usp_connection.cpp:932 ... Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
 ```
 
-Observation: the SDK did not emit a successful connection event in this phase. The CRL server had already received 5 requests, indicating CRL-related network activity from the SDK path.
+CRL server evidence after this attempt:
 
-### Phase 3: Certificate rotation
+```text
+CRL server status after initial attempt:
+  total_requests: 5
+  partitions requested: partition1 x 5
+```
+
+### Phase 2: Rotate mock Speech certificate
 
 The mock Speech server was restarted with the partition2 certificate:
 
 ```text
-Simulating Azure certificate rotation.
-New cert has CDP: http://localhost:9000/crl/partition2.crl
+Speech server starting (PID 175239, partition2)...
 Speech server ready on port 8443 (partition2)
 Server restarted with partition2 certificate ✓
 ```
 
-### Phase 4: Decommission old partition
-
-The old partition1 CRL endpoint was blocked:
+The old partition1 CRL endpoint was then blocked to model a removed/unavailable old CRL partition:
 
 ```text
-Blocking partition1 CRL (simulates old CDN partition removed).
-Now: GET /crl/partition1.crl → 404
-     GET /crl/partition2.crl → 200
 Blocked CRL partition1 → will return 404
+blocked_partitions: [1]
 ```
 
-### Phase 5: SDK reconnect after rotation
+### Phase 3: Reproduce SDK/OpenSSL failure after rotation with CRL checking enabled
 
-The SDK attempted to reconnect to the service now serving the partition2 certificate:
+The SDK retried the endpoint now serving the partition2 certificate, still with CRL checking enabled:
 
 ```text
 Connecting to: wss://localhost:8443
+SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-enabled.log
 Starting connection attempt...
-```
-
-Result:
-
-```text
 Connection timed out after 10.0s
-CRL server total requests: 10
-Blocked partitions: [1]
 ```
 
-Observation: the non-bypass SDK connection timed out again after the rotation, while CRL server request count increased from 5 to 10.
-
-### Phase 6: Recovery with CRL download failure bypass
-
-The test then enabled:
+The native SDK log again shows OpenSSL CRL checking enabled and the SDK rejecting/closing the connection through the OpenSSL transport path:
 
 ```text
-OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE=true
+tlsio_openssl.c:1882 CRL check enabled.
+tlsio_openssl.c:1030 Error loading CRL from http://localhost:9000/crl/partition2.crl
+tlsio_openssl.c:1624 Unable to retrieve CRL, CRL check may fail.
+tlsio_openssl.c:691 error:10080002:BIO routines::system lib
+tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d]
+usp_connection.cpp:932 ... Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
 ```
 
-The SDK connected successfully:
+CRL server evidence after the failure attempt:
 
 ```text
-CRL download failure: CONTINUE
-✓ Connected! (event: ConnectionEventArgs(session_id=996c93856d234904af7fe409d6d497e1))
+CRL server status after failure attempt:
+  total_requests: 10
+  partitions requested: partition1 x 5, partition2 x 5
+  blocked_partitions: [1]
+```
+
+Observation: the public Python SDK surface reported the failed path as a timeout, while the native Speech SDK trace shows the OpenSSL/CRL rejection and underlying WebSocket open failure.
+
+### Phase 4: Disable CRL checking and try again
+
+The test then applied the Microsoft Learn workaround:
+
+```text
+OPENSSL_DISABLE_CRL_CHECK=true
+```
+
+The same SDK endpoint connected immediately:
+
+```text
+Applying Microsoft Learn workaround: OPENSSL_DISABLE_CRL_CHECK=true
+Connecting to: wss://localhost:8443
+SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-disabled.log
+CRL check: DISABLED
+Starting connection attempt...
+✓ Connected! (event: ConnectionEventArgs(session_id=c7ab8aa664dd4563952488e7e7a7231f))
 Connection successful in 0.10s
 ```
+
+The native SDK log confirms the property was read and CRL checking was switched off:
+
+```text
+named_properties.h:479 ISpxNamedProperties::GetStringValue: ... name='OPENSSL_DISABLE_CRL_CHECK'; value='true'
+tlsio_openssl.c:1878 CRL check off, as requested.
+```
+
+No new CRL fetches were made during the disable-CRL attempt; the CRL server total remained at 10.
 
 ## Summary result
 
 ```text
-Scenario Results:
-  Step 1 (initial connect):   timeout
-  Step 4 (after rotation):    timeout
-  Step 5 (CRL bypass):        connected
+initial_crl_enabled: status=timeout elapsed=10.0
 
-CRL Server Stats:
-  Total requests: 11
-  Blocked: [1]
+after_rotation_crl_enabled: status=timeout elapsed=10.0
+  Native SDK/OpenSSL evidence:
+  - CRL check enabled.
+  - Error loading CRL from http://localhost:9000/crl/partition2.crl
+  - FORCE-Closing tlsio instance.
+  - WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+
+after_rotation_crl_disabled: status=connected elapsed=0.10096240043640137
+  Native SDK/OpenSSL evidence:
+  - OPENSSL_DISABLE_CRL_CHECK value='true'
+  - CRL check off, as requested.
+
+Final outcome:
+  ✓ Reproduced SDK/OpenSSL failure with CRL checking enabled and recovered with OPENSSL_DISABLE_CRL_CHECK=true
 ```
 
-Interpretation:
+## Interpretation
 
-- The authentic Speech SDK 1.40.0 path did not produce a clean certificate-verification exception in this run; it surfaced as connection timeout for the non-bypass attempts.
-- The CRL server was hit repeatedly during those timeout attempts, showing CRL activity was involved.
-- The same SDK endpoint connected immediately when CRL download failure bypass was enabled.
-- This supports the operational conclusion that CRL download/validation behavior can block Speech SDK connectivity, and that `OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE=true` restores connectivity in this reproduction.
+- With Azure Speech SDK 1.40.0 on Linux, the failing path is surfaced to this Python test harness as `timeout`, but the native SDK log clearly shows the OpenSSL transport rejecting/closing the connection after CRL loading fails.
+- Setting `OPENSSL_DISABLE_CRL_CHECK=true` on SpeechConfig changes the native OpenSSL path from `CRL check enabled` to `CRL check off, as requested`.
+- With CRL checking disabled, the same post-rotation endpoint connects successfully in about 0.10 seconds.
+- This matches the Microsoft Learn workaround for pre-1.48.2 Speech SDK deployments that cannot immediately upgrade.
 
-## Full authentic Speech SDK log
+## Full orchestrator log excerpt
 
 ```text
-$ python src/reproduce.py --use-sdk
-13:53:20 [Orchestrator] INFO ╔══════════════════════════════════════════════════════════════════╗
-13:53:20 [Orchestrator] INFO ║  Speech SDK CRL Partition Caching Conflict — Reproduction Tool  ║
-13:53:20 [Orchestrator] INFO ╚══════════════════════════════════════════════════════════════════╝
-13:53:20 [Orchestrator] INFO 
-13:53:20 [Orchestrator] INFO Mode: Speech SDK
-13:53:20 [Orchestrator] INFO Speech port: 8443
-13:53:20 [Orchestrator] INFO CRL port: 9000
-13:53:20 [Orchestrator] INFO 
-13:53:20 [Orchestrator] INFO 
-13:53:20 [Orchestrator] INFO ######################################################################
-13:53:20 [Orchestrator] INFO # PHASE 0: Precondition Check
-13:53:20 [Orchestrator] INFO ######################################################################
-13:53:20 [Orchestrator] INFO 
-13:53:20 [Orchestrator] INFO All PKI artifacts present ✓
-13:53:20 [Orchestrator] INFO Cleared CRL cache: /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache
-13:53:20 [Orchestrator] INFO 
-13:53:20 [Orchestrator] INFO ######################################################################
-13:53:20 [Orchestrator] INFO # PHASE 1: Start Servers (partition1)
-13:53:20 [Orchestrator] INFO ######################################################################
-13:53:20 [Orchestrator] INFO 
-13:53:20 [Orchestrator] INFO CRL server starting (PID 173307)...
-13:53:20 [Orchestrator] INFO CRL server ready on port 9000
-13:53:20 [Orchestrator] INFO Speech server starting (PID 173308, partition1)...
-13:53:20 [Orchestrator] INFO Speech server ready on port 8443 (partition1)
-13:53:21 [Orchestrator] INFO 
-13:53:21 [Orchestrator] INFO ######################################################################
-13:53:21 [Orchestrator] INFO # PHASE 2: Initial Connection (partition1 cert + CRL)
-13:53:21 [Orchestrator] INFO ######################################################################
-13:53:21 [Orchestrator] INFO 
-13:53:21 [Orchestrator] INFO Client connects to server with partition1 certificate.
-13:53:21 [Orchestrator] INFO Expected: CRL fetched from http://localhost:9000/crl/partition1.crl
-13:53:21 [Orchestrator] INFO 
-13:53:21 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
-13:53:21 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
-13:53:21 [Orchestrator] INFO Cache contents before connection: []
-13:53:22 [Orchestrator] INFO Speech SDK version: 1.40.0
-13:53:22 [Orchestrator] INFO Connecting to: wss://localhost:8443
-13:53:22 [Orchestrator] INFO Starting connection attempt...
-13:53:32 [Orchestrator] ERROR   Connection timed out after 10.0s
-13:53:32 [Orchestrator] INFO CRL server requests so far: 5
-13:53:32 [Orchestrator] INFO 
-13:53:32 [Orchestrator] INFO ######################################################################
-13:53:32 [Orchestrator] INFO # PHASE 3: Certificate Rotation (partition1 → partition2)
-13:53:32 [Orchestrator] INFO ######################################################################
-13:53:32 [Orchestrator] INFO 
-13:53:32 [Orchestrator] INFO Simulating Azure certificate rotation.
-13:53:32 [Orchestrator] INFO New cert has CDP: http://localhost:9000/crl/partition2.crl
-13:53:32 [Orchestrator] INFO 
-13:53:33 [Orchestrator] INFO Speech server starting (PID 173317, partition2)...
-13:53:33 [Orchestrator] INFO Speech server ready on port 8443 (partition2)
-13:53:34 [Orchestrator] INFO Server restarted with partition2 certificate ✓
-13:53:34 [Orchestrator] INFO 
-13:53:34 [Orchestrator] INFO ######################################################################
-13:53:34 [Orchestrator] INFO # PHASE 4: Decommission Old Partition
-13:53:34 [Orchestrator] INFO ######################################################################
-13:53:34 [Orchestrator] INFO 
-13:53:34 [Orchestrator] INFO Blocking partition1 CRL (simulates old CDN partition removed).
-13:53:34 [Orchestrator] INFO Now: GET /crl/partition1.crl → 404
-13:53:34 [Orchestrator] INFO      GET /crl/partition2.crl → 200
-13:53:34 [Orchestrator] INFO 
-13:53:34 [Orchestrator] WARNING Blocked CRL partition1 → will return 404
-13:53:34 [Orchestrator] INFO 
-13:53:34 [Orchestrator] INFO ######################################################################
-13:53:34 [Orchestrator] INFO # PHASE 5: Client Reconnects (CRL Partition Conflict)
-13:53:34 [Orchestrator] INFO ######################################################################
-13:53:34 [Orchestrator] INFO 
-13:53:34 [Orchestrator] INFO Client reconnects to server (now serving partition2 cert).
-13:53:34 [Orchestrator] INFO SDK will try to validate cert → needs CRL from partition2.
-13:53:34 [Orchestrator] INFO If SDK has stale partition1 CRL cached → potential conflict!
-13:53:34 [Orchestrator] INFO 
-13:53:34 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
-13:53:34 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
-13:53:34 [Orchestrator] INFO Cache contents before connection: []
-13:53:34 [Orchestrator] INFO Speech SDK version: 1.40.0
-13:53:34 [Orchestrator] INFO Connecting to: wss://localhost:8443
-13:53:34 [Orchestrator] INFO Starting connection attempt...
-13:53:44 [Orchestrator] ERROR   Connection timed out after 10.0s
-13:53:44 [Orchestrator] INFO CRL server total requests: 10
-13:53:44 [Orchestrator] INFO Blocked partitions: [1]
-13:53:44 [Orchestrator] INFO 
-13:53:44 [Orchestrator] INFO ######################################################################
-13:53:44 [Orchestrator] INFO # PHASE 6: Recovery (CRL Check Bypass)
-13:53:44 [Orchestrator] INFO ######################################################################
-13:53:44 [Orchestrator] INFO 
-13:53:44 [Orchestrator] INFO Testing recovery: disable CRL check to restore connectivity.
-13:53:44 [Orchestrator] INFO SDK property: OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE=true
-13:53:44 [Orchestrator] INFO 
-13:53:44 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
-13:53:44 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
-13:53:44 [Orchestrator] INFO Cache contents before connection: []
-13:53:44 [Orchestrator] INFO Speech SDK version: 1.40.0
-13:53:44 [Orchestrator] INFO Connecting to: wss://localhost:8443
-13:53:44 [Orchestrator] INFO   CRL download failure: CONTINUE
-13:53:44 [Orchestrator] INFO Starting connection attempt...
-13:53:44 [Orchestrator] INFO   ✓ Connected! (event: ConnectionEventArgs(session_id=996c93856d234904af7fe409d6d497e1))
-13:53:44 [Orchestrator] INFO   Connection successful in 0.10s
-13:53:44 [Orchestrator] INFO 
-13:53:44 [Orchestrator] INFO ######################################################################
-13:53:44 [Orchestrator] INFO # SUMMARY
-13:53:44 [Orchestrator] INFO ######################################################################
-13:53:44 [Orchestrator] INFO 
-13:53:44 [Orchestrator] INFO Scenario Results:
-13:53:44 [Orchestrator] INFO   Step 1 (initial connect):   timeout
-13:53:44 [Orchestrator] INFO   Step 4 (after rotation):    timeout
-13:53:44 [Orchestrator] INFO   Step 5 (CRL bypass):        connected
-13:53:44 [Orchestrator] INFO 
-13:53:44 [Orchestrator] INFO ? Unexpected result: timeout
-13:53:44 [Orchestrator] INFO 
-13:53:44 [Orchestrator] INFO CRL Server Stats:
-13:53:44 [Orchestrator] INFO   Total requests: 11
-13:53:44 [Orchestrator] INFO   Blocked: [1]
-13:53:44 [Orchestrator] INFO 
-Cleaning up processes...
-13:53:44 [Orchestrator] INFO Done.
+$ python src/repro_disable_crl.py --timeout 10
+14:27:49 [Orchestrator] INFO # PHASE 0: Precondition Check
+14:27:49 [Orchestrator] INFO All PKI artifacts present ✓
+14:27:49 [Orchestrator] INFO Cleared CRL cache: /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache
+14:27:49 [Orchestrator] INFO CRL server ready on port 9000
+14:27:50 [Orchestrator] INFO Speech server ready on port 8443 (partition1)
+
+14:27:51 [Orchestrator] INFO # PHASE 1: SDK Initial Connection With CRL Checking Enabled
+14:27:51 [Orchestrator] INFO Speech SDK version: 1.40.0
+14:27:51 [Orchestrator] INFO Connecting to: wss://localhost:8443
+14:27:51 [Orchestrator] INFO SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-initial-crl-enabled.log
+14:28:01 [Orchestrator] ERROR Connection timed out after 10.0s
+14:28:01 [Orchestrator] INFO tlsio_openssl.c:1882 CRL check enabled.
+14:28:01 [Orchestrator] INFO tlsio_openssl.c:1030 Error loading CRL from http://localhost:9000/crl/partition1.crl
+14:28:01 [Orchestrator] INFO web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED)
+
+14:28:03 [Orchestrator] INFO # PHASE 4: Reproduce SDK/OpenSSL Failure With CRL Checking Enabled
+14:28:03 [Orchestrator] INFO Speech SDK version: 1.40.0
+14:28:03 [Orchestrator] INFO Connecting to: wss://localhost:8443
+14:28:03 [Orchestrator] INFO SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-enabled.log
+14:28:13 [Orchestrator] ERROR Connection timed out after 10.0s
+14:28:13 [Orchestrator] INFO tlsio_openssl.c:1882 CRL check enabled.
+14:28:13 [Orchestrator] INFO tlsio_openssl.c:1030 Error loading CRL from http://localhost:9000/crl/partition2.crl
+14:28:13 [Orchestrator] INFO tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+14:28:13 [Orchestrator] INFO web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED)
+
+14:28:13 [Orchestrator] INFO # PHASE 5: Disable CRL Checking And Try Again
+14:28:13 [Orchestrator] INFO Applying Microsoft Learn workaround: OPENSSL_DISABLE_CRL_CHECK=true
+14:28:13 [Orchestrator] INFO CRL check: DISABLED
+14:28:13 [Orchestrator] INFO ✓ Connected! (event: ConnectionEventArgs(session_id=c7ab8aa664dd4563952488e7e7a7231f))
+14:28:13 [Orchestrator] INFO Connection successful in 0.10s
+14:28:13 [Orchestrator] INFO name='OPENSSL_DISABLE_CRL_CHECK'; value='true'
+14:28:13 [Orchestrator] INFO tlsio_openssl.c:1878 CRL check off, as requested.
+
+14:28:13 [Orchestrator] INFO initial_crl_enabled: status=timeout elapsed=10.0
+14:28:13 [Orchestrator] INFO after_rotation_crl_enabled: status=timeout elapsed=10.0
+14:28:13 [Orchestrator] INFO after_rotation_crl_disabled: status=connected elapsed=0.10096240043640137
+14:28:13 [Orchestrator] INFO ✓ Reproduced SDK/OpenSSL failure with CRL checking enabled and recovered with OPENSSL_DISABLE_CRL_CHECK=true
 ```

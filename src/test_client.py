@@ -68,6 +68,7 @@ def attempt_connection(
     continue_on_crl_failure: bool = False,
     disable_crl_check: bool = False,
     timeout: float = 10.0,
+    sdk_log_file: str | None = None,
 ):
     """Attempt to connect to the mock Speech Service using Speech SDK."""
     try:
@@ -85,6 +86,13 @@ def attempt_connection(
         subscription=subscription_key,
         endpoint=endpoint,
     )
+
+    if sdk_log_file:
+        speech_config.set_property(
+            speechsdk.PropertyId.Speech_LogFilename,
+            sdk_log_file,
+        )
+        log.info(f"  SDK native log file: {sdk_log_file}")
 
     # CRL behavior configuration
     if continue_on_crl_failure:
@@ -194,6 +202,7 @@ def main():
     parser.add_argument("--timeout", type=float, default=10.0, help="Connection timeout (seconds)")
     parser.add_argument("--continue-on-crl-failure", action="store_true", help="Set OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE")
     parser.add_argument("--disable-crl", action="store_true", help="Disable CRL check entirely")
+    parser.add_argument("--sdk-log-file", default=None, help="Speech SDK native log file path")
     parser.add_argument("--cache-dir", type=str, default=None, help="CRL cache directory")
     args = parser.parse_args()
 
@@ -218,6 +227,7 @@ def main():
         continue_on_crl_failure=args.continue_on_crl_failure,
         disable_crl_check=args.disable_crl,
         timeout=args.timeout,
+        sdk_log_file=args.sdk_log_file,
     )
 
     # Show cache state after
