@@ -111,10 +111,14 @@ def attempt_connection(
         audio_config=audio_config,
     )
 
-    # Track connection events
+    # Track connection events. SpeechRecognizer itself does not expose
+    # connected/disconnected signals in Speech SDK 1.40; those are on the
+    # Connection object returned by Connection.from_recognizer().
     connection_established = False
     connection_error = None
     canceled_reason = None
+
+    connection = speechsdk.Connection.from_recognizer(recognizer)
 
     def on_connected(evt):
         nonlocal connection_established
@@ -136,8 +140,8 @@ def attempt_connection(
         log.warning(f"    Error: {cancellation.error_code}")
         log.warning(f"    Details: {cancellation.error_details}")
 
-    recognizer.connected.connect(on_connected)
-    recognizer.disconnected.connect(on_disconnected)
+    connection.connected.connect(on_connected)
+    connection.disconnected.connect(on_disconnected)
     recognizer.canceled.connect(on_canceled)
 
     log.info("Starting connection attempt...")

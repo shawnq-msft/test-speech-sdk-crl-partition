@@ -11,6 +11,7 @@ mkdir -p "${CERTS_DIR}/newcerts"
 
 # Create CA database files
 > "${CERTS_DIR}/index.txt"
+echo "unique_subject = no" > "${CERTS_DIR}/index.txt.attr"
 echo "1000" > "${CERTS_DIR}/serial"
 echo "1000" > "${CERTS_DIR}/crlnumber"
 
@@ -34,6 +35,9 @@ default_days      = 365
 default_crl_days  = 30
 policy            = policy_anything
 copy_extensions   = copy
+# Allow issuing multiple localhost server certs for different CRL partitions.
+# OpenSSL 3 rejects duplicate subjects by default otherwise.
+unique_subject     = no
 
 [policy_anything]
 countryName             = optional
