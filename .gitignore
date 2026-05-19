@@ -1,0 +1,12 @@
+certs/*.pem
+certs/*.crl
+certs/*.srl
+certs/*.old
+certs/index.txt*
+certs/serial*
+certs/newcerts/
+__pycache__/
+*.pyc
+.venv/
+venv/
+tmp_crl_cache/
