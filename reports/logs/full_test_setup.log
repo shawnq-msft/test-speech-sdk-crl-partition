@@ -21,7 +21,7 @@ The Subject's Distinguished Name is as follows
 commonName            :ASN.1 12:'localhost'
 organizationName      :ASN.1 12:'Speech SDK CRL Test'
 countryName           :PRINTABLE:'US'
-Certificate is to be certified until May 20 02:00:07 2027 GMT (365 days)
+Certificate is to be certified until May 20 02:35:05 2027 GMT (365 days)
 
 Write out database with 1 new entries
 Database updated
@@ -44,7 +44,7 @@ The Subject's Distinguished Name is as follows
 commonName            :ASN.1 12:'localhost'
 organizationName      :ASN.1 12:'Speech SDK CRL Test'
 countryName           :PRINTABLE:'US'
-Certificate is to be certified until May 20 02:00:07 2027 GMT (365 days)
+Certificate is to be certified until May 20 02:35:05 2027 GMT (365 days)
 
 Write out database with 1 new entries
 Database updated
@@ -64,38 +64,20 @@ Using configuration from /home/qiushuo/src/test-speech-sdk-crl-partition/scripts
 [OK] partition2.crl generated (DER)
 
 --- partition1.crl info ---
-Certificate Revocation List (CRL):
-        Version 2 (0x1)
-        Signature Algorithm: sha256WithRSAEncryption
         Issuer: CN = Test CRL Partition CA, O = Speech SDK CRL Test, C = US
-        Last Update: May 20 02:00:07 2026 GMT
-        Next Update: Jun 19 02:00:07 2026 GMT
-        CRL extensions:
-            X509v3 CRL Number: 
-                4096
-No Revoked Certificates.
-    Signature Algorithm: sha256WithRSAEncryption
-    Signature Value:
-        3f:d1:eb:30:d7:0e:cc:8b:a6:21:49:c1:f7:5e:c8:e7:94:8c:
-        8c:bd:dd:66:2c:8a:f8:69:44:42:db:84:fa:03:f9:9c:11:d6:
-        35:39:94:c6:f7:a6:7f:8c:e9:b7:df:6d:2b:85:46:6e:cb:ed:
+        Last Update: May 20 02:35:05 2026 GMT
+        Next Update: Jun 19 02:35:05 2026 GMT
+            X509v3 Issuing Distribution Point: critical
+                Full Name:
+                  URI:http://localhost:9000/crl/partition1.crl
 
 --- partition2.crl info ---
-Certificate Revocation List (CRL):
-        Version 2 (0x1)
-        Signature Algorithm: sha256WithRSAEncryption
         Issuer: CN = Test CRL Partition CA, O = Speech SDK CRL Test, C = US
-        Last Update: May 20 02:00:07 2026 GMT
-        Next Update: Jun 19 02:00:07 2026 GMT
-        CRL extensions:
-            X509v3 CRL Number: 
-                4097
-No Revoked Certificates.
-    Signature Algorithm: sha256WithRSAEncryption
-    Signature Value:
-        2d:ca:8c:45:16:40:53:98:f5:7c:1d:17:c9:ad:85:3a:66:d7:
-        fc:1e:f4:33:70:3b:ca:5b:31:e1:ee:24:f9:78:33:dd:70:ec:
-        e4:b6:fe:72:52:29:ff:4f:b5:af:1f:f0:65:83:c4:83:cb:f9:
+        Last Update: May 20 02:35:05 2026 GMT
+        Next Update: Jun 19 02:35:05 2026 GMT
+            X509v3 Issuing Distribution Point: critical
+                Full Name:
+                  URI:http://localhost:9000/crl/partition2.crl
 
 === CRL Generation Complete ===
   /home/qiushuo/src/test-speech-sdk-crl-partition/scripts/../certs/partition1.crl

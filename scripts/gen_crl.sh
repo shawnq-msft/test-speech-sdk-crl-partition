@@ -17,6 +17,7 @@ echo "=== Generating CRL files ==="
 # Generate CRL for partition 1 (valid for 30 days)
 openssl ca -gencrl \
     -config "${CNF}" \
+    -crlexts crl_ext_partition1 \
     -out "${CERTS_DIR}/partition1.crl.pem" \
     -crldays 30
 openssl crl \
@@ -30,6 +31,7 @@ echo "[OK] partition1.crl generated (DER)"
 # Here we generate the same CA's CRL but as a "different partition"
 openssl ca -gencrl \
     -config "${CNF}" \
+    -crlexts crl_ext_partition2 \
     -out "${CERTS_DIR}/partition2.crl.pem" \
     -crldays 30
 openssl crl \
@@ -41,11 +43,11 @@ echo "[OK] partition2.crl generated (DER)"
 # Verify CRL files
 echo ""
 echo "--- partition1.crl info ---"
-openssl crl -inform DER -in "${CERTS_DIR}/partition1.crl" -noout -text | head -15
+openssl crl -inform DER -in "${CERTS_DIR}/partition1.crl" -noout -text | grep -E "(Issuer:|Last Update:|Next Update:|Issuing Distribution Point|Full Name|URI:)" | head -20
 
 echo ""
 echo "--- partition2.crl info ---"
-openssl crl -inform DER -in "${CERTS_DIR}/partition2.crl" -noout -text | head -15
+openssl crl -inform DER -in "${CERTS_DIR}/partition2.crl" -noout -text | grep -E "(Issuer:|Last Update:|Next Update:|Issuing Distribution Point|Full Name|URI:)" | head -20
 
 echo ""
 echo "=== CRL Generation Complete ==="

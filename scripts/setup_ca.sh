@@ -82,6 +82,20 @@ authorityKeyIdentifier = keyid:always, issuer
 
 [crl_ext]
 authorityKeyIdentifier = keyid:always
+
+[crl_ext_partition1]
+authorityKeyIdentifier = keyid:always
+issuingDistributionPoint = critical, @idp_partition1
+
+[crl_ext_partition2]
+authorityKeyIdentifier = keyid:always
+issuingDistributionPoint = critical, @idp_partition2
+
+[idp_partition1]
+fullname = URI:http://localhost:9000/crl/partition1.crl
+
+[idp_partition2]
+fullname = URI:http://localhost:9000/crl/partition2.crl
 EOF
 
 # Replace placeholder with actual path
