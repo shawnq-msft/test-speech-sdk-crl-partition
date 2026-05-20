@@ -17,27 +17,35 @@ echo "=== Generating CRL files ==="
 # Generate CRL for partition 1 (valid for 30 days)
 openssl ca -gencrl \
     -config "${CNF}" \
-    -out "${CERTS_DIR}/partition1.crl" \
+    -out "${CERTS_DIR}/partition1.crl.pem" \
     -crldays 30
-echo "[OK] partition1.crl generated"
+openssl crl \
+    -in "${CERTS_DIR}/partition1.crl.pem" \
+    -outform DER \
+    -out "${CERTS_DIR}/partition1.crl"
+echo "[OK] partition1.crl generated (DER)"
 
 # Generate CRL for partition 2 (valid for 30 days)
 # In real scenarios, partition2 would be a separate CRL scope
 # Here we generate the same CA's CRL but as a "different partition"
 openssl ca -gencrl \
     -config "${CNF}" \
-    -out "${CERTS_DIR}/partition2.crl" \
+    -out "${CERTS_DIR}/partition2.crl.pem" \
     -crldays 30
-echo "[OK] partition2.crl generated"
+openssl crl \
+    -in "${CERTS_DIR}/partition2.crl.pem" \
+    -outform DER \
+    -out "${CERTS_DIR}/partition2.crl"
+echo "[OK] partition2.crl generated (DER)"
 
 # Verify CRL files
 echo ""
 echo "--- partition1.crl info ---"
-openssl crl -in "${CERTS_DIR}/partition1.crl" -noout -text | head -15
+openssl crl -inform DER -in "${CERTS_DIR}/partition1.crl" -noout -text | head -15
 
 echo ""
 echo "--- partition2.crl info ---"
-openssl crl -in "${CERTS_DIR}/partition2.crl" -noout -text | head -15
+openssl crl -inform DER -in "${CERTS_DIR}/partition2.crl" -noout -text | head -15
 
 echo ""
 echo "=== CRL Generation Complete ==="

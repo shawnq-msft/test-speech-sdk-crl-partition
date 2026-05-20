@@ -107,7 +107,7 @@ def summarize_native_log(path: str) -> None:
         log.info("No OpenSSL/CRL/error keywords found in native log.")
 
 
-def run_scenario(speech_port: int, crl_port: int, timeout: float) -> bool:
+def run_scenario(speech_port: int, crl_port: int, timeout: float, expect_failure: bool = True) -> bool:
     print_section("PHASE 0: Precondition Check")
     required_files = [
         CERTS_DIR / "ca-cert.pem",
@@ -184,11 +184,18 @@ def run_scenario(speech_port: int, crl_port: int, timeout: float) -> bool:
 
         failure_status = results["after_rotation_crl_enabled"].get("status")
         disabled_status = results["after_rotation_crl_disabled"].get("status")
-        if failure_status != "connected" and disabled_status == "connected":
-            log.info("✓ Reproduced SDK/OpenSSL failure with CRL checking enabled and recovered with OPENSSL_DISABLE_CRL_CHECK=true")
+        if expect_failure:
+            if failure_status != "connected" and disabled_status == "connected":
+                log.info("✓ Reproduced SDK/OpenSSL failure with CRL checking enabled and recovered with OPENSSL_DISABLE_CRL_CHECK=true")
+                return True
+            log.warning("Expected enabled attempt to fail and disabled attempt to connect; observed enabled=%s disabled=%s", failure_status, disabled_status)
+            return False
+
+        if failure_status == "connected" and disabled_status == "connected":
+            log.info("✓ CRL checking enabled path connected; disable-CRL path also connected")
             return True
 
-        log.warning("Expected enabled attempt to fail and disabled attempt to connect; observed enabled=%s disabled=%s", failure_status, disabled_status)
+        log.warning("Expected both enabled and disabled attempts to connect; observed enabled=%s disabled=%s", failure_status, disabled_status)
         return False
     finally:
         log.info("\nCleaning up processes...")
@@ -207,9 +214,19 @@ def main() -> None:
     parser.add_argument("--speech-port", type=int, default=8443)
     parser.add_argument("--crl-port", type=int, default=9000)
     parser.add_argument("--timeout", type=float, default=10.0)
+    parser.add_argument(
+        "--expect-success-with-crl",
+        action="store_true",
+        help="Pass when validating a fixed harness where CRL checking should succeed",
+    )
     args = parser.parse_args()
 
-    success = run_scenario(args.speech_port, args.crl_port, args.timeout)
+    success = run_scenario(
+        args.speech_port,
+        args.crl_port,
+        args.timeout,
+        expect_failure=not args.expect_success_with_crl,
+    )
     sys.exit(0 if success else 1)
 
 
