@@ -6,11 +6,12 @@ Microsoft Learn CRL compatibility guidance:
 
   1. Start CRL server and mock Speech server with partition1 certificate.
   2. Run Speech SDK connection with CRL checking enabled.
-  3. Rotate mock Speech server to partition2 certificate.
-  4. Block old partition1 CRL endpoint.
-  5. Run Speech SDK connection with CRL checking enabled and capture the
-     OpenSSL rejection / SDK failure evidence.
-  6. Run the same Speech SDK connection with OPENSSL_DISABLE_CRL_CHECK=true
+  3. Rotate mock Speech server to partition2 certificate while keeping both
+     CRL partition endpoints reachable.
+  4. Run Speech SDK connection with CRL checking enabled and capture the
+     OpenSSL rejection / SDK failure evidence from local CRL cache/CDP scope
+     conflict.
+  5. Run the same Speech SDK connection with OPENSSL_DISABLE_CRL_CHECK=true
      and verify that connection succeeds.
 
 The Speech SDK native logs are written to reports/logs/sdk-native-*.log.
@@ -57,9 +58,14 @@ def clear_crl_cache() -> None:
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def block_crl_partition(partition: int, crl_port: int) -> None:
-    urlopen(f"http://127.0.0.1:{crl_port}/control/block/{partition}", timeout=2)
-    log.warning("Blocked CRL partition%s → will return 404", partition)
+def assert_crl_endpoint_reachable(crl_port: int, partition: int) -> None:
+    url = f"http://127.0.0.1:{crl_port}/crl/partition{partition}.crl"
+    with urlopen(url, timeout=2) as response:
+        status = getattr(response, "status", response.getcode())
+        data = response.read()
+    if status != 200 or not data:
+        raise RuntimeError(f"CRL partition{partition} endpoint not reachable: status={status} bytes={len(data)}")
+    log.info("Verified partition%s CRL endpoint reachable: HTTP %s, %d bytes", partition, status, len(data))
 
 
 def run_sdk_attempt(label: str, speech_port: int, *, disable_crl: bool, timeout: float) -> dict:
@@ -153,9 +159,12 @@ def run_scenario(speech_port: int, crl_port: int, timeout: float, expect_failure
         time.sleep(1)
         log.info("Server restarted with partition2 certificate ✓")
 
-        print_section("PHASE 3: Block Old CRL Partition1")
-        block_crl_partition(1, crl_port)
-        log.info("CRL server status after block: %s", json.dumps(get_crl_status(crl_port), indent=2))
+        print_section("PHASE 3: Keep Both CRL Partitions Reachable")
+        log.info("No CRL endpoint is blocked or disabled in this test.")
+        assert_crl_endpoint_reachable(crl_port, 1)
+        assert_crl_endpoint_reachable(crl_port, 2)
+        log.info("Both partition1.crl and partition2.crl remain reachable; the expected failure is from SDK/OpenSSL using the stale local partition1 CRL cache against the rotated partition2 certificate CDP/scope.")
+        log.info("CRL server status before after-rotation attempt: %s", json.dumps(get_crl_status(crl_port), indent=2))
 
         print_section("PHASE 4: Reproduce SDK/OpenSSL Failure With CRL Checking Enabled")
         results["after_rotation_crl_enabled"] = run_sdk_attempt(

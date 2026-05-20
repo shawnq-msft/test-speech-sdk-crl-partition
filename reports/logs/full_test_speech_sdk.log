@@ -1,72 +1,72 @@
-10:35:05 [Orchestrator] INFO 
-10:35:05 [Orchestrator] INFO ######################################################################
-10:35:05 [Orchestrator] INFO # PHASE 0: Precondition Check
-10:35:05 [Orchestrator] INFO ######################################################################
-10:35:05 [Orchestrator] INFO 
-10:35:05 [Orchestrator] INFO All PKI artifacts present ✓
-10:35:05 [Orchestrator] INFO CRL server starting (PID 437762)...
-10:35:05 [Orchestrator] INFO CRL server ready on port 9000
-10:35:05 [Orchestrator] INFO Speech server starting (PID 437781, partition1)...
-10:35:06 [Orchestrator] INFO Speech server ready on port 8443 (partition1)
-10:35:07 [Orchestrator] INFO 
-10:35:07 [Orchestrator] INFO ######################################################################
-10:35:07 [Orchestrator] INFO # PHASE 1: SDK Initial Connection With CRL Checking Enabled
-10:35:07 [Orchestrator] INFO ######################################################################
-10:35:07 [Orchestrator] INFO 
-10:35:07 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
-10:35:07 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
-10:35:07 [Orchestrator] INFO Cache contents before connection: []
-10:35:07 [Orchestrator] INFO Speech SDK version: 1.40.0
-10:35:07 [Orchestrator] INFO Connecting to: wss://localhost:8443
-10:35:07 [Orchestrator] INFO   SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-initial-crl-enabled.log
-10:35:07 [Orchestrator] INFO Starting connection attempt...
-10:35:17 [Orchestrator] ERROR   Connection timed out after 10.0s
-10:35:17 [Orchestrator] INFO SDK native log: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-initial-crl-enabled.log (121456 bytes)
-10:35:17 [Orchestrator] INFO SDK native log interesting lines (last 40):
-10:35:17 [Orchestrator] INFO   [932607]: 337ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 588ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
-10:35:17 [Orchestrator] INFO   [932607]: 588ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
-10:35:17 [Orchestrator] INFO   [932607]: 588ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
-10:35:17 [Orchestrator] INFO   [932607]: 599ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
-10:35:17 [Orchestrator] INFO   [932607]: 599ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
-10:35:17 [Orchestrator] INFO   [932607]: 599ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:35:07.6553285Z
-10:35:17 [Orchestrator] INFO   [932607]: 599ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:12, TransportError: connection:0x8c01bfa0, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 599ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 599ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
-10:35:17 [Orchestrator] INFO   [932607]: 599ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 849ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
-10:35:17 [Orchestrator] INFO   [932607]: 850ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
-10:35:17 [Orchestrator] INFO   [932607]: 850ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
-10:35:17 [Orchestrator] INFO   [932607]: 860ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
-10:35:17 [Orchestrator] INFO   [932607]: 860ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
-10:35:17 [Orchestrator] INFO   [932607]: 860ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:35:07.9167845Z
-10:35:17 [Orchestrator] INFO   [932607]: 860ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:11, TransportError: connection:0x8c077a70, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 860ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 860ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
-10:35:17 [Orchestrator] INFO   [932607]: 860ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 1111ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
-10:35:17 [Orchestrator] INFO   [932607]: 1112ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
-10:35:17 [Orchestrator] INFO   [932607]: 1112ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:35:08.1792298Z
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:12, TransportError: connection:0x8c01bfa0, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2707 Error
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_DBG_TRACE_FUNCTION:  recognition_result.cpp:119 InitErrorResult
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x0073208c06f370; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x0073208c06f370; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [932607]: 1123ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x0073208c06f370; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [182740]: 1124ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x0073208c06f370; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [182740]: 1126ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x0073208c06f370; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [182740]: 1126ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x0073208c06f370; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO   [182740]: 1126ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x0073208c06f370; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:17 [Orchestrator] INFO CRL server status after initial attempt: {
+10:53:29 [Orchestrator] INFO 
+10:53:29 [Orchestrator] INFO ######################################################################
+10:53:29 [Orchestrator] INFO # PHASE 0: Precondition Check
+10:53:29 [Orchestrator] INFO ######################################################################
+10:53:29 [Orchestrator] INFO 
+10:53:29 [Orchestrator] INFO All PKI artifacts present ✓
+10:53:29 [Orchestrator] INFO CRL server starting (PID 468299)...
+10:53:30 [Orchestrator] INFO CRL server ready on port 9000
+10:53:30 [Orchestrator] INFO Speech server starting (PID 468317, partition1)...
+10:53:30 [Orchestrator] INFO Speech server ready on port 8443 (partition1)
+10:53:31 [Orchestrator] INFO 
+10:53:31 [Orchestrator] INFO ######################################################################
+10:53:31 [Orchestrator] INFO # PHASE 1: SDK Initial Connection With CRL Checking Enabled
+10:53:31 [Orchestrator] INFO ######################################################################
+10:53:31 [Orchestrator] INFO 
+10:53:31 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
+10:53:31 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
+10:53:31 [Orchestrator] INFO Cache contents before connection: []
+10:53:31 [Orchestrator] INFO Speech SDK version: 1.40.0
+10:53:31 [Orchestrator] INFO Connecting to: wss://localhost:8443
+10:53:31 [Orchestrator] INFO   SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-initial-crl-enabled.log
+10:53:31 [Orchestrator] INFO Starting connection attempt...
+10:53:41 [Orchestrator] ERROR   Connection timed out after 10.0s
+10:53:41 [Orchestrator] INFO SDK native log: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-initial-crl-enabled.log (121431 bytes)
+10:53:41 [Orchestrator] INFO SDK native log interesting lines (last 40):
+10:53:41 [Orchestrator] INFO   [758546]: 296ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 547ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+10:53:41 [Orchestrator] INFO   [758546]: 547ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
+10:53:41 [Orchestrator] INFO   [758546]: 547ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
+10:53:41 [Orchestrator] INFO   [758546]: 558ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
+10:53:41 [Orchestrator] INFO   [758546]: 558ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+10:53:41 [Orchestrator] INFO   [758546]: 558ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:53:31.7751446Z
+10:53:41 [Orchestrator] INFO   [758546]: 558ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:11, TransportError: connection:0x1bfa0, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 558ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 558ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
+10:53:41 [Orchestrator] INFO   [758546]: 558ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 808ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+10:53:41 [Orchestrator] INFO   [758546]: 809ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
+10:53:41 [Orchestrator] INFO   [758546]: 809ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
+10:53:41 [Orchestrator] INFO   [758546]: 820ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
+10:53:41 [Orchestrator] INFO   [758546]: 820ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+10:53:41 [Orchestrator] INFO   [758546]: 820ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:53:32.0371219Z
+10:53:41 [Orchestrator] INFO   [758546]: 820ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:12, TransportError: connection:0x60a40, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 820ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 820ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
+10:53:41 [Orchestrator] INFO   [758546]: 820ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 1071ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+10:53:41 [Orchestrator] INFO   [758546]: 1071ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
+10:53:41 [Orchestrator] INFO   [758546]: 1071ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:53:32.2991405Z
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:12, TransportError: connection:0x1bfa0, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2707 Error
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_DBG_TRACE_FUNCTION:  recognition_result.cpp:119 InitErrorResult
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x007fed00081110; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fed00081110; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [758546]: 1082ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x007fed00081110; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [655075]: 1083ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fed00081110; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [655075]: 1085ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fed00081110; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [655075]: 1085ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fed00081110; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO   [655075]: 1085ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fed00081110; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:41 [Orchestrator] INFO CRL server status after initial attempt: {
   "requests": [
     {
-      "time": 1779244507.1285734,
+      "time": 1779245611.2499745,
       "partition": 1,
       "client": "127.0.0.1"
     }
@@ -75,148 +75,175 @@
   "delayed_partitions": {},
   "total_requests": 1
 }
-10:35:17 [Orchestrator] INFO 
-10:35:17 [Orchestrator] INFO ######################################################################
-10:35:17 [Orchestrator] INFO # PHASE 2: Rotate Certificate To Partition2
-10:35:17 [Orchestrator] INFO ######################################################################
-10:35:17 [Orchestrator] INFO 
-10:35:17 [Orchestrator] INFO Speech server starting (PID 438298, partition2)...
-10:35:17 [Orchestrator] INFO Speech server ready on port 8443 (partition2)
-10:35:22 [Orchestrator] INFO Server restarted with partition2 certificate ✓
-10:35:22 [Orchestrator] INFO 
-10:35:22 [Orchestrator] INFO ######################################################################
-10:35:22 [Orchestrator] INFO # PHASE 3: Block Old CRL Partition1
-10:35:22 [Orchestrator] INFO ######################################################################
-10:35:22 [Orchestrator] INFO 
-10:35:22 [Orchestrator] WARNING Blocked CRL partition1 → will return 404
-10:35:22 [Orchestrator] INFO CRL server status after block: {
+10:53:41 [Orchestrator] INFO 
+10:53:41 [Orchestrator] INFO ######################################################################
+10:53:41 [Orchestrator] INFO # PHASE 2: Rotate Certificate To Partition2
+10:53:41 [Orchestrator] INFO ######################################################################
+10:53:41 [Orchestrator] INFO 
+10:53:41 [Orchestrator] INFO Speech server starting (PID 468749, partition2)...
+10:53:41 [Orchestrator] INFO Speech server ready on port 8443 (partition2)
+10:53:42 [Orchestrator] INFO Server restarted with partition2 certificate ✓
+10:53:42 [Orchestrator] INFO 
+10:53:42 [Orchestrator] INFO ######################################################################
+10:53:42 [Orchestrator] INFO # PHASE 3: Keep Both CRL Partitions Reachable
+10:53:42 [Orchestrator] INFO ######################################################################
+10:53:42 [Orchestrator] INFO 
+10:53:42 [Orchestrator] INFO No CRL endpoint is blocked or disabled in this test.
+10:53:42 [Orchestrator] INFO Verified partition1 CRL endpoint reachable: HTTP 200, 774 bytes
+10:53:42 [Orchestrator] INFO Verified partition2 CRL endpoint reachable: HTTP 200, 774 bytes
+10:53:42 [Orchestrator] INFO Both partition1.crl and partition2.crl remain reachable; the expected failure is from SDK/OpenSSL using the stale local partition1 CRL cache against the rotated partition2 certificate CDP/scope.
+10:53:42 [Orchestrator] INFO CRL server status before after-rotation attempt: {
   "requests": [
     {
-      "time": 1779244507.1285734,
+      "time": 1779245611.2499745,
       "partition": 1,
+      "client": "127.0.0.1"
+    },
+    {
+      "time": 1779245622.958835,
+      "partition": 1,
+      "client": "127.0.0.1"
+    },
+    {
+      "time": 1779245622.9598885,
+      "partition": 2,
       "client": "127.0.0.1"
     }
   ],
-  "blocked_partitions": [
-    1
-  ],
+  "blocked_partitions": [],
   "delayed_partitions": {},
-  "total_requests": 1
+  "total_requests": 3
 }
-10:35:22 [Orchestrator] INFO 
-10:35:22 [Orchestrator] INFO ######################################################################
-10:35:22 [Orchestrator] INFO # PHASE 4: Reproduce SDK/OpenSSL Failure With CRL Checking Enabled
-10:35:22 [Orchestrator] INFO ######################################################################
-10:35:22 [Orchestrator] INFO 
-10:35:22 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
-10:35:22 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
-10:35:22 [Orchestrator] INFO Cache contents before connection: [PosixPath('/home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache/ec1457bb.crl.0')]
-10:35:22 [Orchestrator] INFO Speech SDK version: 1.40.0
-10:35:22 [Orchestrator] INFO Connecting to: wss://localhost:8443
-10:35:22 [Orchestrator] INFO   SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-enabled.log
-10:35:22 [Orchestrator] INFO Starting connection attempt...
-10:35:32 [Orchestrator] ERROR   Connection timed out after 10.0s
-10:35:32 [Orchestrator] INFO SDK native log: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-enabled.log (121254 bytes)
-10:35:32 [Orchestrator] INFO SDK native log interesting lines (last 40):
-10:35:32 [Orchestrator] INFO   [182740]: 15643ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 15894ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
-10:35:32 [Orchestrator] INFO   [182740]: 15894ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
-10:35:32 [Orchestrator] INFO   [182740]: 15894ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
-10:35:32 [Orchestrator] INFO   [182740]: 15904ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
-10:35:32 [Orchestrator] INFO   [182740]: 15904ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
-10:35:32 [Orchestrator] INFO   [182740]: 15904ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:35:22.9609002Z
-10:35:32 [Orchestrator] INFO   [182740]: 15904ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:11, TransportError: connection:0x9001c050, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 15904ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 15904ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
-10:35:32 [Orchestrator] INFO   [182740]: 15904ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16155ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
-10:35:32 [Orchestrator] INFO   [182740]: 16156ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
-10:35:32 [Orchestrator] INFO   [182740]: 16156ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
-10:35:32 [Orchestrator] INFO   [182740]: 16166ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
-10:35:32 [Orchestrator] INFO   [182740]: 16166ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
-10:35:32 [Orchestrator] INFO   [182740]: 16167ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:35:23.2231583Z
-10:35:32 [Orchestrator] INFO   [182740]: 16167ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:12, TransportError: connection:0x9003a6a0, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16167ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16167ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
-10:35:32 [Orchestrator] INFO   [182740]: 16167ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16417ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
-10:35:32 [Orchestrator] INFO   [182740]: 16418ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
-10:35:32 [Orchestrator] INFO   [182740]: 16418ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:35:23.4845815Z
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:11, TransportError: connection:0x9001c050, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2707 Error
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_DBG_TRACE_FUNCTION:  recognition_result.cpp:119 InitErrorResult
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x00732090021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00732090021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [182740]: 16428ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x00732090021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [600847]: 16428ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00732090021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [600847]: 16429ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00732090021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [600847]: 16429ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00732090021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO   [600847]: 16429ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00732090021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
-10:35:32 [Orchestrator] INFO CRL server status after failure attempt: {
+10:53:42 [Orchestrator] INFO 
+10:53:42 [Orchestrator] INFO ######################################################################
+10:53:42 [Orchestrator] INFO # PHASE 4: Reproduce SDK/OpenSSL Failure With CRL Checking Enabled
+10:53:42 [Orchestrator] INFO ######################################################################
+10:53:42 [Orchestrator] INFO 
+10:53:42 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
+10:53:42 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
+10:53:42 [Orchestrator] INFO Cache contents before connection: [PosixPath('/home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache/ec1457bb.crl.0')]
+10:53:42 [Orchestrator] INFO Speech SDK version: 1.40.0
+10:53:42 [Orchestrator] INFO Connecting to: wss://localhost:8443
+10:53:42 [Orchestrator] INFO   SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-enabled.log
+10:53:42 [Orchestrator] INFO Starting connection attempt...
+10:53:53 [Orchestrator] ERROR   Connection timed out after 10.0s
+10:53:53 [Orchestrator] INFO SDK native log: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-enabled.log (121269 bytes)
+10:53:53 [Orchestrator] INFO SDK native log interesting lines (last 40):
+10:53:53 [Orchestrator] INFO   [655075]: 12020ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12271ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+10:53:53 [Orchestrator] INFO   [655075]: 12271ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
+10:53:53 [Orchestrator] INFO   [655075]: 12271ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
+10:53:53 [Orchestrator] INFO   [655075]: 12282ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
+10:53:53 [Orchestrator] INFO   [655075]: 12282ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+10:53:53 [Orchestrator] INFO   [655075]: 12282ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:53:43.4991362Z
+10:53:53 [Orchestrator] INFO   [655075]: 12282ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:12, TransportError: connection:0xf801c050, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12282ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12282ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
+10:53:53 [Orchestrator] INFO   [655075]: 12282ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12532ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+10:53:53 [Orchestrator] INFO   [655075]: 12533ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
+10:53:53 [Orchestrator] INFO   [655075]: 12533ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
+10:53:53 [Orchestrator] INFO   [655075]: 12543ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
+10:53:53 [Orchestrator] INFO   [655075]: 12543ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+10:53:53 [Orchestrator] INFO   [655075]: 12543ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:53:43.7605808Z
+10:53:53 [Orchestrator] INFO   [655075]: 12543ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:11, TransportError: connection:0xf803a6a0, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12543ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12543ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
+10:53:53 [Orchestrator] INFO   [655075]: 12543ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12794ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+10:53:53 [Orchestrator] INFO   [655075]: 12794ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
+10:53:53 [Orchestrator] INFO   [655075]: 12794ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1882 CRL check enabled.
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_TRACE_ERROR: AZ_LOG_ERROR:  tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_TRACE_ERROR:  web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED), code=2573[0x00000a0d], time=2026-05-20T02:53:44.0225328Z
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_TRACE_INFO:  usp_connection.cpp:932 TS:11, TransportError: connection:0xf801c050, code=5, string=Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:1997 Response: On Error: Code:5, Message: Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 1/-1 USP-ERRORERROR
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_TRACE_ERROR:  usp_reco_engine_adapter.cpp:2011 OnError: site->Error() ... error='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2707 Error
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_DBG_TRACE_FUNCTION:  recognition_result.cpp:119 InitErrorResult
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x007fecf8021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecf8021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [655075]: 12805ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x007fecf8021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [329499]: 12806ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecf8021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [329499]: 12806ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecf8021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [329499]: 12807ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecf8021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO   [329499]: 12807ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecf8021630; name='RESULT-ErrorDetails'; value='Connection failed (no connection to the remote host). Internal error: 1. Error details: Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED
+10:53:53 [Orchestrator] INFO CRL server status after failure attempt: {
   "requests": [
     {
-      "time": 1779244507.1285734,
+      "time": 1779245611.2499745,
       "partition": 1,
+      "client": "127.0.0.1"
+    },
+    {
+      "time": 1779245622.958835,
+      "partition": 1,
+      "client": "127.0.0.1"
+    },
+    {
+      "time": 1779245622.9598885,
+      "partition": 2,
       "client": "127.0.0.1"
     }
   ],
-  "blocked_partitions": [
-    1
-  ],
+  "blocked_partitions": [],
   "delayed_partitions": {},
-  "total_requests": 1
+  "total_requests": 3
 }
-10:35:32 [Orchestrator] INFO 
-10:35:32 [Orchestrator] INFO ######################################################################
-10:35:32 [Orchestrator] INFO # PHASE 5: Disable CRL Checking And Try Again
-10:35:32 [Orchestrator] INFO ######################################################################
-10:35:32 [Orchestrator] INFO 
-10:35:32 [Orchestrator] INFO Applying Microsoft Learn workaround: OPENSSL_DISABLE_CRL_CHECK=true
-10:35:32 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
-10:35:32 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
-10:35:32 [Orchestrator] INFO Cache contents before connection: [PosixPath('/home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache/ec1457bb.crl.0')]
-10:35:32 [Orchestrator] INFO Speech SDK version: 1.40.0
-10:35:32 [Orchestrator] INFO Connecting to: wss://localhost:8443
-10:35:32 [Orchestrator] INFO   SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-disabled.log
-10:35:32 [Orchestrator] INFO   CRL check: DISABLED
-10:35:32 [Orchestrator] INFO Starting connection attempt...
-10:35:32 [Orchestrator] INFO   ✓ Connected! (event: ConnectionEventArgs(session_id=d7b0b619ae46478daa89a0e24647965e))
-10:35:32 [Orchestrator] INFO   Connection successful in 0.10s
-10:35:32 [Orchestrator] INFO SDK native log: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-disabled.log (44464 bytes)
-10:35:32 [Orchestrator] INFO SDK native log interesting lines (last 40):
-10:35:32 [Orchestrator] INFO   [600847]: 25387ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00732084001798; name='OPENSSL_DISABLE_CRL_CHECK'; value='true'
-10:35:32 [Orchestrator] INFO   [600847]: 25387ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
-10:35:32 [Orchestrator] INFO   [600847]: 25388ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
-10:35:32 [Orchestrator] INFO   [600847]: 25388ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1878 CRL check off, as requested.
-10:35:32 [Orchestrator] INFO CRL server status after disable-CRL attempt: {
+10:53:53 [Orchestrator] INFO 
+10:53:53 [Orchestrator] INFO ######################################################################
+10:53:53 [Orchestrator] INFO # PHASE 5: Disable CRL Checking And Try Again
+10:53:53 [Orchestrator] INFO ######################################################################
+10:53:53 [Orchestrator] INFO 
+10:53:53 [Orchestrator] INFO Applying Microsoft Learn workaround: OPENSSL_DISABLE_CRL_CHECK=true
+10:53:53 [Orchestrator] INFO SSL_CERT_FILE = /home/qiushuo/src/test-speech-sdk-crl-partition/certs/ca-cert.pem
+10:53:53 [Orchestrator] INFO TMPDIR = /home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache (CRL cache location)
+10:53:53 [Orchestrator] INFO Cache contents before connection: [PosixPath('/home/qiushuo/src/test-speech-sdk-crl-partition/tmp_crl_cache/ec1457bb.crl.0')]
+10:53:53 [Orchestrator] INFO Speech SDK version: 1.40.0
+10:53:53 [Orchestrator] INFO Connecting to: wss://localhost:8443
+10:53:53 [Orchestrator] INFO   SDK native log file: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-disabled.log
+10:53:53 [Orchestrator] INFO   CRL check: DISABLED
+10:53:53 [Orchestrator] INFO Starting connection attempt...
+10:53:53 [Orchestrator] INFO   ✓ Connected! (event: ConnectionEventArgs(session_id=53e3a64b69224489b014bcc2ebcecbd0))
+10:53:53 [Orchestrator] INFO   Connection successful in 0.10s
+10:53:53 [Orchestrator] INFO SDK native log: /home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-disabled.log (44417 bytes)
+10:53:53 [Orchestrator] INFO SDK native log interesting lines (last 40):
+10:53:53 [Orchestrator] INFO   [329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='OPENSSL_DISABLE_CRL_CHECK'; value='true'
+10:53:53 [Orchestrator] INFO   [329499]: 21841ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+10:53:53 [Orchestrator] INFO   [329499]: 21841ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
+10:53:53 [Orchestrator] INFO   [329499]: 21841ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1878 CRL check off, as requested.
+10:53:53 [Orchestrator] INFO CRL server status after disable-CRL attempt: {
   "requests": [
     {
-      "time": 1779244507.1285734,
+      "time": 1779245611.2499745,
       "partition": 1,
+      "client": "127.0.0.1"
+    },
+    {
+      "time": 1779245622.958835,
+      "partition": 1,
+      "client": "127.0.0.1"
+    },
+    {
+      "time": 1779245622.9598885,
+      "partition": 2,
       "client": "127.0.0.1"
     }
   ],
-  "blocked_partitions": [
-    1
-  ],
+  "blocked_partitions": [],
   "delayed_partitions": {},
-  "total_requests": 1
+  "total_requests": 3
 }
-10:35:32 [Orchestrator] INFO 
-10:35:32 [Orchestrator] INFO ######################################################################
-10:35:32 [Orchestrator] INFO # SUMMARY
-10:35:32 [Orchestrator] INFO ######################################################################
-10:35:32 [Orchestrator] INFO 
-10:35:32 [Orchestrator] INFO initial_crl_enabled: status=timeout elapsed=10.0 sdk_log=/home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-initial-crl-enabled.log
-10:35:32 [Orchestrator] INFO after_rotation_crl_enabled: status=timeout elapsed=10.0 sdk_log=/home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-enabled.log
-10:35:32 [Orchestrator] INFO after_rotation_crl_disabled: status=connected elapsed=0.10087871551513672 sdk_log=/home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-disabled.log
-10:35:32 [Orchestrator] INFO ✓ Reproduced SDK/OpenSSL failure with CRL checking enabled and recovered with OPENSSL_DISABLE_CRL_CHECK=true
-10:35:32 [Orchestrator] INFO 
+10:53:53 [Orchestrator] INFO 
+10:53:53 [Orchestrator] INFO ######################################################################
+10:53:53 [Orchestrator] INFO # SUMMARY
+10:53:53 [Orchestrator] INFO ######################################################################
+10:53:53 [Orchestrator] INFO 
+10:53:53 [Orchestrator] INFO initial_crl_enabled: status=timeout elapsed=10.0 sdk_log=/home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-initial-crl-enabled.log
+10:53:53 [Orchestrator] INFO after_rotation_crl_enabled: status=timeout elapsed=10.0 sdk_log=/home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-enabled.log
+10:53:53 [Orchestrator] INFO after_rotation_crl_disabled: status=connected elapsed=0.10076594352722168 sdk_log=/home/qiushuo/src/test-speech-sdk-crl-partition/reports/logs/sdk-native-after-rotation-crl-disabled.log
+10:53:53 [Orchestrator] INFO ✓ Reproduced SDK/OpenSSL failure with CRL checking enabled and recovered with OPENSSL_DISABLE_CRL_CHECK=true
+10:53:53 [Orchestrator] INFO 
 Cleaning up processes...
-10:35:32 [Orchestrator] INFO Done.
+10:53:53 [Orchestrator] INFO Done.
