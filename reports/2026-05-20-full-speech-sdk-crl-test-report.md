@@ -1,148 +1,134 @@
 # Azure Speech SDK CRL Partition Full Test Report
 
-Date: 2026-05-20T10:54:04+08:00
+Date: 2026-05-20T13:48:52+08:00
 Repository: shawnq-msft/test-speech-sdk-crl-partition
-Environment: WSL Linux, Python venv `.venv`, Azure Speech SDK for Python 1.40.0, OpenSSL 3.0.13
+Environment: WSL Linux, Python venv `.venv`, Azure Speech SDK for Python `azure-cognitiveservices-speech==1.40.0`
 
 ## Purpose
 
-Run a clean full test using the authentic Azure Speech SDK path only:
+Run the full Azure Speech SDK reproduction requested for the CRL partition/cache scenario:
 
-1. Create fresh local CA, two localhost server certificates, and two CRL partitions.
-2. Verify the CRL artifacts are real partition-scoped DER CRLs.
-3. Start the mock Speech endpoint with the partition1 certificate and let the SDK fetch/cache partition1 CRL.
-4. Rotate the mock Speech endpoint to the partition2 certificate while keeping both CRL endpoints reachable.
-5. Confirm the CRL-checking-enabled SDK path still fails because the SDK/OpenSSL path uses the stale local partition1 CRL cache against a certificate whose CDP/CRL scope is partition2.
-6. Confirm `OPENSSL_DISABLE_CRL_CHECK=true` mitigates the failure.
+1. Start with a clean local CRL cache and a mock Speech endpoint using the partition1 TLS certificate.
+2. Confirm the first CRL-enabled Speech SDK connection succeeds. This first phase should not be an SSL failure; it only primes the local SDK/OpenSSL CRL cache with partition1 CRL data.
+3. Rotate the mock Speech endpoint to a partition2 certificate.
+4. Keep both CRL endpoints reachable. This test does not disable, delay, or 404 partition1.
+5. Reconnect with CRL checking still enabled and verify the SDK/OpenSSL failure caused by stale local CRL cache vs the rotated certificate's partition2 CDP/scope.
+6. Reconnect with `OPENSSL_DISABLE_CRL_CHECK=true` and verify the Microsoft Learn mitigation restores connectivity.
 
-## Important correction for this run
+## Important correction from the previous run
 
-During partition switch, this test does not disable, remove, or 404 `partition1.crl`.
+The earlier report incorrectly showed Phase 1 as an SSL verification failure. That was a harness issue, not the intended scenario.
 
-Both CRL files remain reachable:
+Root cause: the Speech SDK/OpenSSL path enables CRL checking for the chain. The test CA is self-signed, so the CA certificate also needed a CDP compatible with the initial partition1 CRL. Without that, the first connection could fail before the partition-switch scenario was exercised.
 
-- `http://localhost:9000/crl/partition1.crl` returns HTTP 200.
-- `http://localhost:9000/crl/partition2.crl` returns HTTP 200.
+Harness fix now applied:
 
-The conflict under test is not HTTP CRL unavailability. The conflict is between:
-
-- the SDK/OpenSSL local CRL cache, which contains the partition1 CRL file, and
-- the rotated server certificate, whose CDP and CRL scope are partition2.
-
-## CRL partition setup
-
-The CRLs are DER-encoded and include partition-specific Issuing Distribution Point extensions:
-
-- `partition1.crl` has IDP `URI:http://localhost:9000/crl/partition1.crl`
-- `partition2.crl` has IDP `URI:http://localhost:9000/crl/partition2.crl`
-
-This makes the stale-cache test meaningful. OpenSSL treats a partition1 CRL as out of scope for a partition2 certificate.
-
-Direct OpenSSL sanity check after setup:
-
-```text
-verify partition1 cert with partition1 CRL:
-certs/server-part1-cert.pem: OK
-
-verify partition2 cert with stale partition1 CRL:
-C = US, O = Speech SDK CRL Test, CN = localhost
-error 44 at 0 depth lookup: different CRL scope
-error certs/server-part2-cert.pem: verification failed
-
-verify partition2 cert with partition2 CRL:
-certs/server-part2-cert.pem: OK
-```
+- The local test CA certificate includes `crlDistributionPoints = URI:http://localhost:9000/crl/partition1.crl`.
+- The generated CRLs remain DER-encoded.
+- Each partition CRL includes an Issuing Distribution Point URI:
+  - partition1 CRL: `http://localhost:9000/crl/partition1.crl`
+  - partition2 CRL: `http://localhost:9000/crl/partition2.crl`
+- No CRL endpoint is blocked during the switch-partition test.
+- The repro runner now fails the run if the initial CRL-enabled connection does not connect.
 
 ## Commands run
 
 ```bash
 rm -rf certs tmp_crl_cache
 . .venv/bin/activate
+bash scripts/setup_all.sh > reports/logs/full_test_setup.log 2>&1
+
 python -m py_compile src/repro_disable_crl.py src/test_client.py
-bash scripts/setup_all.sh 2>&1 | tee reports/logs/full_test_setup.log
-python src/repro_disable_crl.py --timeout 10 2>&1 | tee reports/logs/full_test_speech_sdk.log
-```
-
-After adding explicit CRL reachability assertions, the Speech SDK runner was executed again:
-
-```bash
 rm -rf tmp_crl_cache
-. .venv/bin/activate
-python -m py_compile src/repro_disable_crl.py src/test_client.py
-python src/repro_disable_crl.py --timeout 10 2>&1 | tee reports/logs/full_test_speech_sdk.log
+python src/repro_disable_crl.py --timeout 10 \
+  2>&1 | tee reports/logs/full_test_speech_sdk.log
 ```
 
-## Setup result
+## Setup validation
 
-The fresh setup succeeded and generated two partitioned DER CRLs.
+Setup log: `reports/logs/full_test_setup.log`
 
-Evidence from `reports/logs/full_test_setup.log`:
+OpenSSL sanity checks appended to the setup log:
 
 ```text
-=== Generating CRL files ===
-Using configuration from .../certs/openssl.cnf
-[OK] partition1.crl generated (DER)
-Using configuration from .../certs/openssl.cnf
-[OK] partition2.crl generated (DER)
-
---- partition1.crl info ---
-        Issuer: CN = Test CRL Partition CA, O = Speech SDK CRL Test, C = US
-        Last Update: May 20 02:52:25 2026 GMT
-        Next Update: Jun 19 02:52:25 2026 GMT
-            X509v3 Issuing Distribution Point: critical
-                Full Name:
-                  URI:http://localhost:9000/crl/partition1.crl
-
---- partition2.crl info ---
-        Issuer: CN = Test CRL Partition CA, O = Speech SDK CRL Test, C = US
-        Last Update: May 20 02:52:25 2026 GMT
-        Next Update: Jun 19 02:52:25 2026 GMT
-            X509v3 Issuing Distribution Point: critical
-                Full Name:
-                  URI:http://localhost:9000/crl/partition2.crl
+OpenSSL sanity check after CA CDP + IDP URI scope:
+certs/server-part1-cert.pem: OK
+certs/server-part1-cert.pem: OK
+C = US, O = Speech SDK CRL Test, CN = localhost
+error 44 at 0 depth lookup: different CRL scope
+error certs/server-part2-cert.pem: verification failed
 ```
 
-## Full Speech SDK test flow
+Meaning:
 
-The full test used `src/repro_disable_crl.py` and captured native Speech SDK logs for each phase.
+- partition1 certificate validates with partition1 CRL.
+- a rotated partition2 certificate does not validate against stale partition1 CRL because the CRL scope is different.
+- this confirms the harness can reproduce the intended stale-cache/CDP-scope conflict without relying on a 404.
 
-### Phase 1 — initial connection with CRL checking enabled
+## Phase 1 — initial connection with CRL checking enabled
 
 Observed public SDK result:
 
 ```text
-initial_crl_enabled: status=timeout elapsed=10.0
+initial_crl_enabled: status=connected elapsed=0.10162043571472168
 ```
 
 Native SDK evidence from `reports/logs/sdk-native-initial-crl-enabled.log`:
 
 ```text
+tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+tlsio_openssl.c:1849 load_system_store not implemented on this platform
 tlsio_openssl.c:1882 CRL check enabled.
-tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
-tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
-web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED)
 ```
 
-The local CRL server was reached for partition1, and the SDK cached the fetched CRL under `tmp_crl_cache/ec1457bb.crl.0`.
+The local CRL server was reached for partition1, and the SDK cached the fetched CRL under `tmp_crl_cache/ec1457bb.crl.0`:
 
-### Phase 2 — rotate server certificate to partition2
+```text
+CRL server status after initial attempt: {
+  "requests": [
+    {
+      "partition": 1,
+      "client": "127.0.0.1"
+    }
+  ],
+  "blocked_partitions": [],
+  "delayed_partitions": {},
+  "total_requests": 1
+}
+```
 
-The server was restarted with the partition2 certificate.
+Conclusion for Phase 1: the first CRL-enabled SDK connection is now normal. It connects successfully and primes the local CRL cache.
 
-### Phase 3 — verify both CRL partitions remain reachable
+## Phase 2 — switch Speech endpoint to partition2 certificate
 
-No CRL endpoint was blocked or disabled.
+The mock Speech server was restarted with the partition2 TLS certificate:
 
-Evidence from `reports/logs/full_test_speech_sdk.log`:
+```text
+PHASE 2: Rotate Certificate To Partition2
+Speech server starting (..., partition2)...
+Speech server ready on port 8443 (partition2)
+Server restarted with partition2 certificate ✓
+```
+
+The partition2 certificate's CDP points to:
+
+```text
+http://localhost:9000/crl/partition2.crl
+```
+
+## Phase 3 — keep both CRL endpoints reachable
+
+This is the key correction: partition1 was not blocked.
+
+Observed log:
 
 ```text
 No CRL endpoint is blocked or disabled in this test.
-Verified partition1 CRL endpoint reachable: HTTP 200, 774 bytes
-Verified partition2 CRL endpoint reachable: HTTP 200, 774 bytes
-Both partition1.crl and partition2.crl remain reachable; the expected failure is from SDK/OpenSSL using the stale local partition1 CRL cache against the rotated partition2 certificate CDP/scope.
+Verified partition1 CRL endpoint reachable: HTTP 200, 771 bytes
+Verified partition2 CRL endpoint reachable: HTTP 200, 771 bytes
 ```
 
-CRL server status confirmed no blocked or delayed partitions:
+CRL server status before the after-rotation attempt:
 
 ```text
 "blocked_partitions": [],
@@ -150,21 +136,9 @@ CRL server status confirmed no blocked or delayed partitions:
 "total_requests": 3
 ```
 
-The three CRL server requests were:
+Conclusion for Phase 3: both CRL files were reachable. The after-rotation failure is not caused by HTTP 404 or CRL server unavailability.
 
-```text
-partition 1  # SDK initial fetch/cache
-partition 1  # explicit reachability check
-partition 2  # explicit reachability check
-```
-
-### Phase 4 — reproduce failure with CRL checking enabled after partition switch
-
-Before the after-rotation attempt, the SDK CRL cache contained only the partition1 CRL:
-
-```text
-Cache contents before connection: [PosixPath('.../tmp_crl_cache/ec1457bb.crl.0')]
-```
+## Phase 4 — after rotation, CRL checking still enabled
 
 Observed public SDK result:
 
@@ -175,58 +149,73 @@ after_rotation_crl_enabled: status=timeout elapsed=10.0
 Native SDK evidence from `reports/logs/sdk-native-after-rotation-crl-enabled.log`:
 
 ```text
+tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+tlsio_openssl.c:1849 load_system_store not implemented on this platform
 tlsio_openssl.c:1882 CRL check enabled.
 tlsio_openssl.c:691 error:0A000086:SSL routines::certificate verify failed
 tlsio_openssl.c:2464 FORCE-Closing tlsio instance.
 web_socket.cpp:902 WS open operation failed with result=1(WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED)
 ```
 
-This confirms the issue is reproduced through the real Speech SDK/OpenSSL path even when both CRL endpoints are available. The test condition is local CRL cache/CDP scope mismatch after server certificate rotation, not CRL HTTP 404.
+CRL server status after this failure still shows no blocked partition and no extra partition2 fetch by the SDK during the failed attempt:
 
-### Phase 5 — mitigate with `OPENSSL_DISABLE_CRL_CHECK=true`
+```text
+"blocked_partitions": [],
+"delayed_partitions": {},
+"total_requests": 3
+```
+
+Interpretation:
+
+- The initial connection cached partition1 CRL locally as `tmp_crl_cache/ec1457bb.crl.0`.
+- After server certificate rotation, the endpoint presents a partition2 certificate whose CDP/scope differs.
+- The SDK/OpenSSL path uses the stale local CRL cache instead of successfully refreshing to the partition2 CRL for that verification attempt.
+- OpenSSL rejects the TLS handshake with certificate verification failure.
+- The public Python SDK waits until timeout because the connection event never succeeds.
+
+## Phase 5 — mitigation with `OPENSSL_DISABLE_CRL_CHECK=true`
 
 Observed public SDK result:
 
 ```text
-after_rotation_crl_disabled: status=connected elapsed=0.10076594352722168
+after_rotation_crl_disabled: status=connected elapsed=0.10134553909301758
 ```
 
 Native SDK evidence from `reports/logs/sdk-native-after-rotation-crl-disabled.log`:
 
 ```text
-ISpxNamedProperties::GetStringValue: ... name='OPENSSL_DISABLE_CRL_CHECK'; value='true'
+name='OPENSSL_DISABLE_CRL_CHECK'; value='true'
+tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+tlsio_openssl.c:1849 load_system_store not implemented on this platform
 tlsio_openssl.c:1878 CRL check off, as requested.
 ```
 
-The SDK connection event fired successfully:
-
-```text
-✓ Connected! (event: ConnectionEventArgs(...))
-Connection successful in 0.10s
-```
+Conclusion for Phase 5: setting `OPENSSL_DISABLE_CRL_CHECK=true` mitigates the partition-switch failure and restores SDK connectivity.
 
 ## Final result
 
-The full test reproduced the issue and confirmed mitigation:
-
 ```text
-initial_crl_enabled: status=timeout elapsed=10.0
+initial_crl_enabled: status=connected elapsed=0.10162043571472168
 after_rotation_crl_enabled: status=timeout elapsed=10.0
-after_rotation_crl_disabled: status=connected elapsed=0.10076594352722168
-✓ Reproduced SDK/OpenSSL failure with CRL checking enabled and recovered with OPENSSL_DISABLE_CRL_CHECK=true
+after_rotation_crl_disabled: status=connected elapsed=0.10134553909301758
+✓ Initial CRL-enabled connection succeeded; after rotation reproduced SDK/OpenSSL failure; OPENSSL_DISABLE_CRL_CHECK=true recovered connectivity
 ```
 
-Conclusion:
-
-- Repro: YES. With CRL checking enabled, Azure Speech SDK/OpenSSL fails the TLS/WebSocket open path with `certificate verify failed` and `WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED` after partition switch.
-- CRL availability: both CRL partition endpoints were reachable with HTTP 200; no partition was blocked, delayed, or removed.
-- Conflict point: the rotated certificate CDP/CRL scope is partition2 while SDK/OpenSSL still uses the stale local partition1 CRL cache.
-- Mitigation: YES. Setting `OPENSSL_DISABLE_CRL_CHECK=true` disables CRL checking in the native SDK/OpenSSL path and the connection succeeds.
-
-## Evidence files kept
+## Evidence files
 
 - `reports/logs/full_test_setup.log`
 - `reports/logs/full_test_speech_sdk.log`
 - `reports/logs/sdk-native-initial-crl-enabled.log`
 - `reports/logs/sdk-native-after-rotation-crl-enabled.log`
 - `reports/logs/sdk-native-after-rotation-crl-disabled.log`
+
+Sensitive SDK property values in the native logs were redacted before commit.
+
+## Conclusion
+
+The corrected full test now matches the expected model:
+
+1. Initial CRL-enabled Speech SDK connection succeeds.
+2. Both partition CRL endpoints remain reachable during certificate rotation.
+3. After rotation, the SDK/OpenSSL path fails while CRL checking is enabled, consistent with stale local CRL cache vs changed certificate CDP/scope.
+4. `OPENSSL_DISABLE_CRL_CHECK=true` mitigates the failure and reconnects successfully.

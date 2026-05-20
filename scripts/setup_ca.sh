@@ -79,17 +79,22 @@ basicConstraints       = critical, CA:TRUE
 keyUsage               = critical, keyCertSign, cRLSign
 subjectKeyIdentifier   = hash
 authorityKeyIdentifier = keyid:always, issuer
+# Speech SDK/OpenSSL enables CRL checking for the full chain. The local
+# self-signed test CA therefore needs a CDP that is compatible with the
+# initial partition1 CRL, otherwise the first connection fails before the
+# partition-switch scenario is exercised.
+crlDistributionPoints  = URI:http://localhost:9000/crl/partition1.crl
 
 [crl_ext]
 authorityKeyIdentifier = keyid:always
 
 [crl_ext_partition1]
 authorityKeyIdentifier = keyid:always
-issuingDistributionPoint = critical, @idp_partition1
+issuingDistributionPoint = @idp_partition1
 
 [crl_ext_partition2]
 authorityKeyIdentifier = keyid:always
-issuingDistributionPoint = critical, @idp_partition2
+issuingDistributionPoint = @idp_partition2
 
 [idp_partition1]
 fullname = URI:http://localhost:9000/crl/partition1.crl

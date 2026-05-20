@@ -191,13 +191,17 @@ def run_scenario(speech_port: int, crl_port: int, timeout: float, expect_failure
         for key, value in results.items():
             log.info("%s: status=%s elapsed=%s sdk_log=%s", key, value.get("status"), value.get("elapsed"), value.get("sdk_log_file"))
 
+        initial_status = results["initial_crl_enabled"].get("status")
         failure_status = results["after_rotation_crl_enabled"].get("status")
         disabled_status = results["after_rotation_crl_disabled"].get("status")
+        if initial_status != "connected":
+            log.warning("Expected initial CRL-enabled attempt to connect; observed initial=%s", initial_status)
+            return False
         if expect_failure:
             if failure_status != "connected" and disabled_status == "connected":
-                log.info("✓ Reproduced SDK/OpenSSL failure with CRL checking enabled and recovered with OPENSSL_DISABLE_CRL_CHECK=true")
+                log.info("✓ Initial CRL-enabled connection succeeded; after rotation reproduced SDK/OpenSSL failure; OPENSSL_DISABLE_CRL_CHECK=true recovered connectivity")
                 return True
-            log.warning("Expected enabled attempt to fail and disabled attempt to connect; observed enabled=%s disabled=%s", failure_status, disabled_status)
+            log.warning("Expected initial connect, enabled-after-rotation failure, and disabled connect; observed initial=%s enabled_after_rotation=%s disabled=%s", initial_status, failure_status, disabled_status)
             return False
 
         if failure_status == "connected" and disabled_status == "connected":

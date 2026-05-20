@@ -21,7 +21,7 @@ The Subject's Distinguished Name is as follows
 commonName            :ASN.1 12:'localhost'
 organizationName      :ASN.1 12:'Speech SDK CRL Test'
 countryName           :PRINTABLE:'US'
-Certificate is to be certified until May 20 02:52:25 2027 GMT (365 days)
+Certificate is to be certified until May 20 05:47:42 2027 GMT (365 days)
 
 Write out database with 1 new entries
 Database updated
@@ -44,7 +44,7 @@ The Subject's Distinguished Name is as follows
 commonName            :ASN.1 12:'localhost'
 organizationName      :ASN.1 12:'Speech SDK CRL Test'
 countryName           :PRINTABLE:'US'
-Certificate is to be certified until May 20 02:52:25 2027 GMT (365 days)
+Certificate is to be certified until May 20 05:47:42 2027 GMT (365 days)
 
 Write out database with 1 new entries
 Database updated
@@ -65,17 +65,17 @@ Using configuration from /home/qiushuo/src/test-speech-sdk-crl-partition/scripts
 
 --- partition1.crl info ---
         Issuer: CN = Test CRL Partition CA, O = Speech SDK CRL Test, C = US
-        Last Update: May 20 02:52:25 2026 GMT
-        Next Update: Jun 19 02:52:25 2026 GMT
-            X509v3 Issuing Distribution Point: critical
+        Last Update: May 20 05:47:42 2026 GMT
+        Next Update: Jun 19 05:47:42 2026 GMT
+            X509v3 Issuing Distribution Point: 
                 Full Name:
                   URI:http://localhost:9000/crl/partition1.crl
 
 --- partition2.crl info ---
         Issuer: CN = Test CRL Partition CA, O = Speech SDK CRL Test, C = US
-        Last Update: May 20 02:52:25 2026 GMT
-        Next Update: Jun 19 02:52:25 2026 GMT
-            X509v3 Issuing Distribution Point: critical
+        Last Update: May 20 05:47:42 2026 GMT
+        Next Update: Jun 19 05:47:42 2026 GMT
+            X509v3 Issuing Distribution Point: 
                 Full Name:
                   URI:http://localhost:9000/crl/partition2.crl
 
@@ -90,3 +90,10 @@ Using configuration from /home/qiushuo/src/test-speech-sdk-crl-partition/scripts
 Next steps:
   1. pip install -r requirements.txt
   2. python src/reproduce.py
+
+OpenSSL sanity check after CA CDP + IDP URI scope:
+certs/server-part1-cert.pem: OK
+certs/server-part1-cert.pem: OK
+C = US, O = Speech SDK CRL Test, CN = localhost
+error 44 at 0 depth lookup: different CRL scope
+error certs/server-part2-cert.pem: verification failed

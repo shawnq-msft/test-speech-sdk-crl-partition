@@ -1,88 +1,88 @@
-[88686]: 21839ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:722 AddRecognizer
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f8010; name='UnsupportedV2ServiceProperties'; value=''
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x131f7b50
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=ISpxRecognizer, h=0x0x131f7b50, p=0x0x131f7b50, tot=1
-[88686]: 21839ms SPX_DBG_TRACE_SCOPE_EXIT:  speechapi_c_factory.cpp:160 recognizer_create_speech_recognizer_from_config
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x131f8010
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=ISpxNamedProperties, h=0x0x131f8010, p=0x0x131f8010, tot=3
-[88686]: 21839ms SPX_DBG_TRACE_SCOPE_ENTER:  connection.cpp:21 CSpxConnection
-[88686]: 21839ms SPX_DBG_TRACE_SCOPE_EXIT:  connection.cpp:21 CSpxConnection
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxConnection' as '604236279'
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x7fed08002880
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=ISpxConnection, h=0x0x7fed08002880, p=0x0x7fed08002880, tot=1
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f8010; name='SPEECH-RecoMode'; value=''
-[88686]: 21839ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x000000131f6790; name='SPEECH-RecoMode'; value='CONVERSATION'
-[88686]: 21839ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:1117 StartRecognitionAsync
-[88686]: 21840ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x7fecf8002fa0
-[88686]: 21840ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=CSpxAsyncOp<void>, h=0x0x7fecf8002fa0, p=0x0x7fecf8002fa0, tot=1
-[655075]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1120 *** CSpxAudioStreamSession::StartRecognitionAsync kicked-off THREAD started ***
-[655075]: 21840ms SPX_TRACE_INFO:  thread_service.cpp:96 Started thread Background with ID [329499ll]
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1177 StartRecognizing
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1178 [0x131f6700]CSpxAudioStreamSession::StartRecognizing
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x131f6700]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 0/0 => 4/1
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1220 [0x131f6700]CSpxAudioStreamSession::StartRecognizing:  Now WaitForPumpSetFormatStart ...
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:3164 StartAudioPump
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3165 [0x131f6700]CSpxAudioStreamSession::StartAudioPump:  RecognitionKind 4 | m_audioPump [0x12f6b718]
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1447 [0x131f6700]CSpxAudioStreamSession::FireSessionStartedEvent: ...
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1458 [0x131f6700]CSpxAudioStreamSession::FireSessionStartedEvent: Firing SessionStarted event: SessionId: 53e3a64b69224489b014bcc2ebcecbd0
-[329499]: 21840ms SPX_TRACE_INFO:  thread_service.cpp:96 Started thread User with ID [332036ll]
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f6790; name='SPEECH-MaxBufferSizeMs'; value='66000'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f6790; name='SPEECH-BufferSizePercentSwitchToLowRate'; value='50'
-[332036]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1725 DispatchEvent task started...
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f6790; name='SPEECH-BufferSizePercentSwitchToHighRate'; value='9'
-[332036]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxSessionEventArgs' as '418547108'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session_throttle_logic.cpp:103 [0x7fecfc003ba0] Is VAD Gating = 0, Is RNNT reco engine = 0, Is conversation transcriber = 0, Is meeting transcriber = 0, Is async transcriber  = 0, fastLane = 5000 msec (160000 bytes), maxDuration = 66000 msec, highDuration = 33000 msec, lowDuration = 5940 msec, lowRate = 100%, highRate = 200%
-[329499]: 21840ms SPX_DBG_TRACE_FUNCTION:  audio_buffer.cpp:92 NewTurn
-[332036]: 21840ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1725 DispatchEvent task complete!
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x000000131f6790; name='IsKeywordAndSpeechRecognizer'; value='false'
-[329499]: 21840ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2786 EnsureInitRecoEngineAdapter
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:2790 CSpxAudioStreamSession::EnsureInitRecoEngineAdapter EnsureResetEngineEngineAdapterComplete
-[329499]: 21840ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2896 EnsureResetEngineEngineAdapterComplete
-[329499]: 21840ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2815 InitRecoEngineAdapter
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspRecoEngineAdapterRetry_OffsetFixupWrapper' as '806006714'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x000000131f6790; name='INTENT-region'; value=''
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3251 [0x131f6700]CSpxAudioStreamSession::StartAudioPump: Starting pump[0x12f6b718]...
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxBufferData' as '705421989'
-[329499]: 21840ms SPX_TRACE_VERBOSE:  buffer_data.cpp:118 [0x7fecfc001570]CSpxBufferData::EnsureInitRingBuffer - Init
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxBlockingReadWriteRingBuffer' as '956428994'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f6790; name='AudioConfig_NumberOfChannelsForCapture'; value='1'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f6790; name='AudioConfig_SampleRateForCapture'; value='16000'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f6790; name='AudioConfig_BitsPerSampleForCapture'; value='16'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxAudioProcessorWriteToAudioSourceBuffer' as '354155511'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:111 [0x130c1fb0]CSpxAudioPump::StartPump():
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:534 [0x130c1fb0]CSpxAudioPump::WaitForPumpStart() ... pre m_cv.wait_for()
-[758546]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_pump.cpp:173 *** AudioPump THREAD started! ***
-[758546]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:176 [0x130c1fb0]CSpxAudioPump::PumpThread(): getting format from reader... 
-[758546]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:186 CSpxAudioPump::PumpThread(): setting format on processor...
-[758546]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:208 [0x130c1fb0]CSpxAudioPump::PumpThread(): allocating our first buffer
-[758546]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:277 [0x130c1fb0]CSpxAudioPump::PumpThread(): Starting loop ... => frame size: 3200 | wFormatTag: 'PCM'| nChannels: 1 | nSamplesPerSec:  16000 | nAvgBytesPerSec: 32000 | nBlockAlign: 2 | wBitsPerSample: 16 | cbSize: 0 
-[758546]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:252 [0x130c1fb0]CSpxAudioPump::PumpThread(), checkAndChangeState: changing states as requested: 'Idle' => 'Processing'
-[758546]: 21840ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:98 CSpxPushAudioInputStream::Read: bytesToRead=3200
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:540 [0x130c1fb0]CSpxAudioPump::WaitForPumpStart() ... post m_cv.wait_for(); state='Processing' (requestedState='Processing')
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:3164 StartAudioPump
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1177 StartRecognizing
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:467 [0x131f6700]CSpxAudioStreamSession::SetFormat: format != nullptr
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x131f6700]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 4/1 => 4/2
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:472 [0x131f6700]CSpxAudioStreamSession::SetFormat: Now ProcessingAudio ...
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:3396 InformAdapterSetFormatStarting
-[655075]: 21840ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1120 *** CSpxAudioStreamSession::StartRecognitionAsync kicked-off THREAD stopped ***
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspRecoEngineAdapterRetry' as '806006714'
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter_retry.cpp:19 InitDelegatePtr
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:49 CSpxUspRecoEngineAdapter
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:50 CSpxUspRecoEngineAdapter: this=0x0x7fecfc001770
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:49 CSpxUspRecoEngineAdapter
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspRecoEngineAdapter' as '806006714'
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:63 Init
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:64 Init: this=0x0x7fecfc001770
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='CARBON-INTERNAL-DumpAudioToDir'; value=''
-[88686]: 21840ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7fecf8002fa0
-[88686]: 21840ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=CSpxAsyncOp<void>, h=0x0x7fecf8002fa0, p=0x0x7fecf8002fa0, tot=0
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:63 Init
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter_retry.cpp:19 InitDelegatePtr
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:115 SetAdapterMode: singleShot=0
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:230 SetFormat
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:231 SetFormat: this=0x0x7fecfc001770
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:234 SetFormat
+[81445]: 11873ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:722 AddRecognizer
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040208c00; name='UnsupportedV2ServiceProperties'; value=''
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x40208740
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=ISpxRecognizer, h=0x0x40208740, p=0x0x40208740, tot=1
+[81445]: 11873ms SPX_DBG_TRACE_SCOPE_EXIT:  speechapi_c_factory.cpp:160 recognizer_create_speech_recognizer_from_config
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x40208c00
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=ISpxNamedProperties, h=0x0x40208c00, p=0x0x40208c00, tot=3
+[81445]: 11873ms SPX_DBG_TRACE_SCOPE_ENTER:  connection.cpp:21 CSpxConnection
+[81445]: 11873ms SPX_DBG_TRACE_SCOPE_EXIT:  connection.cpp:21 CSpxConnection
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxConnection' as '604236279'
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x7f97f40027a0
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=ISpxConnection, h=0x0x7f97f40027a0, p=0x0x7f97f40027a0, tot=1
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040208c00; name='SPEECH-RecoMode'; value=''
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x00000040207bd0; name='SPEECH-RecoMode'; value='CONVERSATION'
+[81445]: 11873ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:1117 StartRecognitionAsync
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x40053480
+[81445]: 11873ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=CSpxAsyncOp<void>, h=0x0x40053480, p=0x0x40053480, tot=1
+[852763]: 11873ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1120 *** CSpxAudioStreamSession::StartRecognitionAsync kicked-off THREAD started ***
+[852763]: 11873ms SPX_TRACE_INFO:  thread_service.cpp:96 Started thread Background with ID [409440ll]
+[409440]: 11873ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1177 StartRecognizing
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1178 [0x40207b40]CSpxAudioStreamSession::StartRecognizing
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x40207b40]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 0/0 => 4/1
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1220 [0x40207b40]CSpxAudioStreamSession::StartRecognizing:  Now WaitForPumpSetFormatStart ...
+[409440]: 11873ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:3164 StartAudioPump
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3165 [0x40207b40]CSpxAudioStreamSession::StartAudioPump:  RecognitionKind 4 | m_audioPump [0x3ff554e8]
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1447 [0x40207b40]CSpxAudioStreamSession::FireSessionStartedEvent: ...
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1458 [0x40207b40]CSpxAudioStreamSession::FireSessionStartedEvent: Firing SessionStarted event: SessionId: 8eb7f688c39c4aa6a4dbdbcc7d213af3
+[409440]: 11873ms SPX_TRACE_INFO:  thread_service.cpp:96 Started thread User with ID [227015ll]
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040207bd0; name='SPEECH-MaxBufferSizeMs'; value='66000'
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040207bd0; name='SPEECH-BufferSizePercentSwitchToLowRate'; value='50'
+[409440]: 11873ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040207bd0; name='SPEECH-BufferSizePercentSwitchToHighRate'; value='9'
+[227015]: 11873ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1725 DispatchEvent task started...
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session_throttle_logic.cpp:103 [0x7f9804001330] Is VAD Gating = 0, Is RNNT reco engine = 0, Is conversation transcriber = 0, Is meeting transcriber = 0, Is async transcriber  = 0, fastLane = 5000 msec (160000 bytes), maxDuration = 66000 msec, highDuration = 33000 msec, lowDuration = 5940 msec, lowRate = 100%, highRate = 200%
+[409440]: 11874ms SPX_DBG_TRACE_FUNCTION:  audio_buffer.cpp:92 NewTurn
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x00000040207bd0; name='IsKeywordAndSpeechRecognizer'; value='false'
+[227015]: 11874ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxSessionEventArgs' as '418547108'
+[409440]: 11874ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2786 EnsureInitRecoEngineAdapter
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:2790 CSpxAudioStreamSession::EnsureInitRecoEngineAdapter EnsureResetEngineEngineAdapterComplete
+[409440]: 11874ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2896 EnsureResetEngineEngineAdapterComplete
+[227015]: 11874ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1725 DispatchEvent task complete!
+[409440]: 11874ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:2815 InitRecoEngineAdapter
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspRecoEngineAdapterRetry_OffsetFixupWrapper' as '806006714'
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x00000040207bd0; name='INTENT-region'; value=''
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3251 [0x40207b40]CSpxAudioStreamSession::StartAudioPump: Starting pump[0x3ff554e8]...
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxBufferData' as '705421989'
+[409440]: 11874ms SPX_TRACE_VERBOSE:  buffer_data.cpp:118 [0x7f9804003e50]CSpxBufferData::EnsureInitRingBuffer - Init
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxBlockingReadWriteRingBuffer' as '956428994'
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040207bd0; name='AudioConfig_NumberOfChannelsForCapture'; value='1'
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040207bd0; name='AudioConfig_SampleRateForCapture'; value='16000'
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040207bd0; name='AudioConfig_BitsPerSampleForCapture'; value='16'
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxAudioProcessorWriteToAudioSourceBuffer' as '354155511'
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:111 [0x400d2900]CSpxAudioPump::StartPump():
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:534 [0x400d2900]CSpxAudioPump::WaitForPumpStart() ... pre m_cv.wait_for()
+[509852]: 11874ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_pump.cpp:173 *** AudioPump THREAD started! ***
+[509852]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:176 [0x400d2900]CSpxAudioPump::PumpThread(): getting format from reader... 
+[509852]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:186 CSpxAudioPump::PumpThread(): setting format on processor...
+[509852]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:208 [0x400d2900]CSpxAudioPump::PumpThread(): allocating our first buffer
+[509852]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:277 [0x400d2900]CSpxAudioPump::PumpThread(): Starting loop ... => frame size: 3200 | wFormatTag: 'PCM'| nChannels: 1 | nSamplesPerSec:  16000 | nAvgBytesPerSec: 32000 | nBlockAlign: 2 | wBitsPerSample: 16 | cbSize: 0 
+[509852]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:252 [0x400d2900]CSpxAudioPump::PumpThread(), checkAndChangeState: changing states as requested: 'Idle' => 'Processing'
+[509852]: 11874ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:98 CSpxPushAudioInputStream::Read: bytesToRead=3200
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:540 [0x400d2900]CSpxAudioPump::WaitForPumpStart() ... post m_cv.wait_for(); state='Processing' (requestedState='Processing')
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:3164 StartAudioPump
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1177 StartRecognizing
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:467 [0x40207b40]CSpxAudioStreamSession::SetFormat: format != nullptr
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x40207b40]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 4/1 => 4/2
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:472 [0x40207b40]CSpxAudioStreamSession::SetFormat: Now ProcessingAudio ...
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:3396 InformAdapterSetFormatStarting
+[852763]: 11874ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1120 *** CSpxAudioStreamSession::StartRecognitionAsync kicked-off THREAD stopped ***
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspRecoEngineAdapterRetry' as '806006714'
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter_retry.cpp:19 InitDelegatePtr
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:49 CSpxUspRecoEngineAdapter
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:50 CSpxUspRecoEngineAdapter: this=0x0x7f980401b8a0
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:49 CSpxUspRecoEngineAdapter
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspRecoEngineAdapter' as '806006714'
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:63 Init
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:64 Init: this=0x0x7f980401b8a0
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='CARBON-INTERNAL-DumpAudioToDir'; value=''
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:63 Init
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter_retry.cpp:19 InitDelegatePtr
+[81445]: 11874ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x40053480
+[81445]: 11874ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=CSpxAsyncOp<void>, h=0x0x40053480, p=0x0x40053480, tot=0
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:115 SetAdapterMode: singleShot=0
+[409440]: 11874ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:230 SetFormat
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:231 SetFormat: this=0x0x7f980401b8a0
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:234 SetFormat
   wFormatTag:      PCM
   nChannels:       1
   nSamplesPerSec:  16000
@@ -90,270 +90,270 @@
   nBlockAlign:     2
   wBitsPerSample:  16
   cbSize:          0
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 0/0 => 1/0 USP-START
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:264 SetFormat: (0x0x7fecfc001770)->PrepareFirstAudioReadyState()
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3202 ResetBeforeFirstAudio: this=0x0x7fecfc001770 ... USP-RESET
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3051 PrepareCompressionCodec: Prepare compression codec.
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='SPEECH-Compression-Codec-Module'; value=''
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3113 PrepareFirstAudioReadyState: (0x0x7fecfc001770)->PrepareCompressionCodec() result:        4. Sending the audio uncompressed
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='AZAC-SDK-PROGRAMMING-LANGUAGE'; value='Python'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x000000131f6790; name='HttpHeader#User-agent'; value='SpeechSDK-Python/1.40.0 Linux Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 6.6.87.2-microsoft-standard-WSL2'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:357 UspInitialize: this=0x0x7fecfc001770
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspCallbackWrapper' as '710381509'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='SessionId'; value='53e3a64b69224489b014bcc2ebcecbd0'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1875 GetScenarioCount: countSpeech=1; countIntent=0; countTranslation=0; countDialog=0, countConversationTranscriber=0, countConversationTranscriberV2=0, countMeetingTranscriber=0, countLanguageId=0
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='SPEECH-Endpoint'; value='wss://localhost:8443'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:535 SetUspEndpoint: Using Custom endpoint: wss://localhost:8443
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:784 SetUspEndpointDefaultSpeechService: Endpoint type: Speech.
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='SPEECH-Endpoint'; value='wss://localhost:8443'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x000000131f6790; name='SPEECH-RecoLanguage'; value='en-us'
-[329499]: 21840ms SPX_TRACE_INFO:  usp_reco_engine_adapter.cpp:1110 SpeechServiceConnection_LanguageIdMode not set or has invalid value .
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:647 SetUspLanguageIdModeAndPriority: languageIdMode=0, languageIdPriority=0
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='SPEECH-RecoMode'; value='CONVERSATION'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:621 SetUspRecoMode: recoMode=1
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:608 SetUspEndpoint: Setting Websocket Polling interval to 10
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='SPEECH-SubscriptionKey'; value='[REDACTED]'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::FindPrefix: this=0x0x007fecfc0017c8; name='User-agent'; value='SpeechSDK-Python/1.40.0 Linux Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 6.6.87.2-microsoft-standard-WSL2'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='SPEECH-ProxyHostBypass'; value=''
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='OPENSSL_DISABLE_CRL_CHECK'; value='true'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='AZAC-SDK-PROGRAMMING-LANGUAGE'; value='Python'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='AudioConfig_AudioSource'; value='Stream'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='AudioConfig_SampleRateForCapture'; value='16000'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='AudioConfig_BitsPerSampleForCapture'; value='16'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007fecfc0017c8; name='AudioConfig_NumberOfChannelsForCapture'; value='1'
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspConnection' as '792041254'
-[329499]: 21840ms SPX_TRACE_INFO:  usp_connection.cpp:485 Connect: entering...
-[329499]: 21840ms SPX_TRACE_INFO:  usp_connection.cpp:502 Adding subscription key headers
-[329499]: 21840ms SPX_TRACE_INFO:  usp_connection.cpp:537 Set a user defined HTTP header 'User-agent':'SpeechSDK-Python/1.40.0 Linux Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 6.6.87.2-microsoft-standard-WSL2'
-[329499]: 21840ms SPX_TRACE_INFO:  usp_connection.cpp:552 connectionUrl=wss://localhost:8443/
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxTelemetry' as '151041793'
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_ENTER:  web_socket.cpp:216 CSpxWebSocket
-[329499]: 21840ms SPX_DBG_TRACE_SCOPE_EXIT:  web_socket.cpp:216 CSpxWebSocket
-[329499]: 21840ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxWebSocket' as '482598724'
-[329499]: 21840ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:31 UwsWebSocket
-[329499]: 21840ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:31 UwsWebSocket
-[329499]: 21840ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:43 Initialize
-[329499]: 21840ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:43 Initialize
-[329499]: 21840ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:221 SetRequestHeader
-[329499]: 21840ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:221 SetRequestHeader
-[329499]: 21840ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:221 SetRequestHeader
-[329499]: 21840ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:221 SetRequestHeader
-[329499]: 21840ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:221 SetRequestHeader
-[329499]: 21840ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:221 SetRequestHeader
-[329499]: 21840ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:215 SetOption
-[329499]: 21840ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:215 SetOption
-[329499]: 21840ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:215 SetOption
-[329499]: 21841ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:215 SetOption
-[329499]: 21841ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:215 SetOption
-[329499]: 21841ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:215 SetOption
-[329499]: 21841ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:215 SetOption
-[329499]: 21841ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:215 SetOption
-[329499]: 21841ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x000000131f6790; name='SPEECH-ConnectionUrl'; value='wss://localhost:8443/'
-[329499]: 21841ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:1163 speech.config {"context":{"system":{"version":"1.40.0","name":"SpeechSDK","build":"Linux-x64","lang":"Python"},"os":{"name":"Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64","version":"6.6.87.2-microsoft-standard-WSL2","platform":"Linux"},"audio":{"source":{"type":"Stream","model":"","samplerate":"16000","bitspersample":"16","channelcount":"1"}}}}
-[329499]: 21841ms SPX_TRACE_INFO:  usp_connection.cpp:787 Create requestId  for messageType 0
-[329499]: 21841ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:230 SetFormat
-[329499]: 21841ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:3396 InformAdapterSetFormatStarting
-[329499]: 21841ms SPX_TRACE_INFO:  web_socket.cpp:800 DoWork: open transport.
-[329499]: 21841ms SPX_TRACE_INFO:  web_socket.cpp:479 Start to open websocket. WebSocket: 0xfc01cee0, wsio handle: 0xfc01d4a0
-[329499]: 21841ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:149 Open
-[329499]: 21841ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
-[329499]: 21841ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
-[329499]: 21841ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1878 CRL check off, as requested.
-[329499]: 21842ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:149 Open
-[329499]: 21861ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:247 OnWebSocketOpened
-[329499]: 21861ms SPX_TRACE_INFO:  web_socket.cpp:879 Opening websocket completed. TransportRequest: 0xfc01cee0, wsio handle: 0xfc01d4a0, time: 2026-05-20T02:53:53.0778374Z
-[329499]: 21861ms SPX_TRACE_INFO:  usp_connection.cpp:902 TS:20, OnConnected: connection:0xfc01c1e0
-[329499]: 21861ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1497 [0x131f6700]CSpxAudioStreamSession::AdapterConnected
-[329499]: 21861ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:247 OnWebSocketOpened
-[329499]: 21861ms SPX_TRACE_VERBOSE:  web_socket.cpp:539 [0x0x7fecfc01cee0] Web socket sending message. Time: 2026-05-20T02:53:53.0779098Z, TimeInQueue: 20ms, IsBinary: 0, Path: speech.config, Size:478 B
-[332036]: 21861ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1725 DispatchEvent task started...
-[332036]: 21861ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxConnectionEventArgs' as '189265475'
-[332036]: 21861ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x7fed08003c68
-[329499]: 21861ms SPX_TRACE_VERBOSE:  web_socket.cpp:647 [0x0x7fecfc01cee0] Web socket send message completed. Result: 0, SendTime: 0ms, IsBinary: 0, Path: speech.config, Size:478 B
-[332036]: 21861ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=ISpxConnectionEventArgs, h=0x0x7fed08003c68, p=0x0x7fed08003c68, tot=1
-[332036]: 21861ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7fed08003c68
-[332036]: 21861ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxConnectionEventArgs, h=0x0x7fed08003c68, p=0x0x7fed08003c68, tot=0
-[332036]: 21861ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1725 DispatchEvent task complete!
-[329499]: 21870ms SPX_TRACE_VERBOSE:  usp_web_socket.cpp:205 USP message received. IsBinary=0, Path=turn.start, Size=141 B, Time=2026-05-20T02:53:53.0870678Z
-[329499]: 21870ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1513 [0x131f6700]CSpxAudioStreamSession::FireConnectionMessageReceived; path=turn.start
-[329499]: 21870ms SPX_TRACE_INFO:  usp_connection.cpp:993 Service originated request received with requestId: 00000000000000000000000000000001
-[329499]: 21870ms SPX_TRACE_INFO:  usp_connection.cpp:1008 Response Message: content type: application/json.
-[329499]: 21870ms SPX_TRACE_INFO:  usp_connection.cpp:1028 TS:30 Response Message: path: turn.start, size: 42.
-[88686]: 21940ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:1139 StopRecognitionAsync
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x7fecf8002fa0
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=CSpxAsyncOp<void>, h=0x0x7fecf8002fa0, p=0x0x7fecf8002fa0, tot=1
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1156 *** CSpxAudioStreamSession::StopRecognitionAsync kicked-off THREAD started ***
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1278 StopRecognizing
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1279 [0x131f6700]CSpxAudioStreamSession::StopRecognizing ...
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x131f6700]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 4/2 => 4/4
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1357 [0x131f6700]CSpxAudioStreamSession::StopRecognizing: We've been asked to stop whatever it is we're doing, while we're actively processing audio ...
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1360 [0x131f6700]CSpxAudioStreamSession::StopRecognizing: Now StoppingPump[0x12f6b718] ...
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_pump.cpp:132 CSpxAudioPump::StopPump() ...
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:133 [0x130c1fb0]CSpxAudioPump::StopPump():
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:136 [0x130c1fb0]CSpxAudioPump::StopPump() ... mutex LOCKED
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:178 SetShouldWaitForPendingData: 0
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:545 [0x130c1fb0]CSpxAudioPump::WaitForPumpIdle() ... pre m_cv.wait_for()
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:136 Read: End of stream detected...
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:153 CSpxPushAudioInputStream::Read: totalBytesRead=0
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:464 [0x130c1fb0]CSpxAudioPump::PumpThread(): read frame duration: 100 ms => sending audio buffer size 0
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxBufferProperties' as '809583448'
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxReadWriteRingBuffer' as '956428994'
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxReadWriteRingBuffer' as '956428994'
-[758546]: 21941ms SPX_TRACE_VERBOSE:  audio_stream_session.cpp:538 Received audio chunk: time: 2026-05-20T02:53:53.1580256Z, size:0.
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:552 ProcessAudio: Non-acknowledged size = 0 bytes (0 msec)
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session_throttle_logic.cpp:164 [0x7fecfc003ba0] m_bytesTransited = 0, unacknowledgedAudioDuration = 0 msec, packetAudioDelay = 0 msec
-[758546]: 21941ms SPX_TRACE_INFO:  audio_pump.cpp:479 [0x130c1fb0]CSpxAudioPump::PumpThread(): m_reader->Read() read ZERO (0) bytes... Indicating end of stream based input.
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:252 [0x130c1fb0]CSpxAudioPump::PumpThread(), checkAndChangeState: changing states as requested: 'Processing' => 'Idle'
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:265 [0x130c1fb0]CSpxAudioPump::PumpThread(): checkAndChangeState: about to exit the while loop, pre-SetFormat(nullptr)
-[758546]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:270 [0x130c1fb0]CSpxAudioPump::PumpThread(): checkAndChangeState: about to exit the while loop, post-SetFormat(nullptr)
-[758546]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_pump.cpp:173 *** AudioPump THREAD stopped! ***
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:551 [0x130c1fb0]CSpxAudioPump::WaitForPumpIdle() ... post m_cv.wait_for(); state='Idle' (requestedState='Idle')
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:178 SetShouldWaitForPendingData: 1
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_pump.cpp:132 CSpxAudioPump::StopPump ... Done!
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1278 StopRecognizing
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1156 *** CSpxAudioStreamSession::StopRecognitionAsync kicked-off THREAD stopped ***
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:705 [0x131f6700]CSpxAudioStreamSession::ProcessNextAudio: Stopping pump, not processing data
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:467 [0x131f6700]CSpxAudioStreamSession::SetFormat: format == nullptr
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x131f6700]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 4/4 => 4/5
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:482 [0x131f6700]CSpxAudioStreamSession::SetFormat: Now WaitForAdapterCompletedSetFormatStop (from StoppingPump)...
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:3445 InformAdapterSetFormatStopping
-[655075]: 21941ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f6790; name='SPEECH-StopRecognitionTimeoutInSeconds'; value=''
-[655075]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:809 WaitForIdle
-[655075]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:810 [0x131f6700]CSpxAudioStreamSession::WaitForIdle timeout: 10000 msec
-[655075]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:815 CSpxAudioStreamSession::WaitForIdle m_cv.wait_for, m_sessionState: 5, m_recoKind: 4, m_sessionStarted: 1, m_sessionStopped: 0
-[329499]: 21941ms SPX_TRACE_INFO:  audio_stream_session.cpp:3456 [0x131f6700]CSpxAudioStreamSession::InformAdapterSetFormatStoppingProcessingAudio - Send zero size audio, processor=0x7fecfc001458
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:316 ProcessAudio: (0x0x7fecfc001770) Ignoring audio size=0 ... (audioState/uspState=1/0)
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3461 CSpxAudioStreamSession::InformAdapterSetFormatStopping m_adapterStreamingAudio: false
-[329499]: 21941ms SPX_TRACE_INFO:  audio_stream_session.cpp:3466 [0x131f6700]CSpxAudioStreamSession::InformAdapterSetFormatStoppingSetFormat(nullptr)
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:230 SetFormat
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:231 SetFormat: this=0x0x7fecfc001770
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:233 SetFormat - pformat == nullptr
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 0/0 USP-DONE
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:270 SetFormat: (0x0x7fecfc001770) site->AdapterCompletedSetFormatStop()
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:3497 *** CSpxAudioStreamSession::AdapterCompletedSetFormatStop kicked-off THREAD started ***
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3498 [0x131f6700]CSpxAudioStreamSession::AdapterCompletedSetFormatStop: kicked-off THREAD started ***
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x131f6700]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 4/5 doesn't match
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x131f6700]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 4/5 doesn't match
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x131f6700]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 4/5 doesn't match
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x131f6700]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 4/5 => 0/0
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1470 [0x131f6700]CSpxAudioStreamSession::FireSessionStoppedEvent: Firing SessionStopped event: SessionId: 53e3a64b69224489b014bcc2ebcecbd0
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1561 EnsureFireResultEvent
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1562 [0x131f6700]CSpxAudioStreamSession::EnsureFireResultEvent
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1561 EnsureFireResultEvent
-[655075]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:815 CSpxAudioStreamSession::WaitForIdle m_cv.wait_for, m_sessionState: 0, m_recoKind: 0, m_sessionStarted: 1, m_sessionStopped: 0
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:3497 *** CSpxAudioStreamSession::AdapterCompletedSetFormatStop kicked-off THREAD stopped ***
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:230 SetFormat
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:3445 InformAdapterSetFormatStopping
-[332036]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1725 DispatchEvent task started...
-[332036]: 21941ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxSessionEventArgs' as '418547108'
-[332036]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1725 DispatchEvent task complete!
-[655075]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:815 CSpxAudioStreamSession::WaitForIdle m_cv.wait_for, m_sessionState: 0, m_recoKind: 0, m_sessionStarted: 1, m_sessionStopped: 1
-[655075]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:809 WaitForIdle
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7fecf8002fa0
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=CSpxAsyncOp<void>, h=0x0x7fecf8002fa0, p=0x0x7fecf8002fa0, tot=0
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x13053798
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxSpeechConfig, h=0x0x13053798, p=0x0x13053798, tot=0
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x13053738
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxNamedProperties, h=0x0x13053738, p=0x0x13053738, tot=2
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7fecf803a338
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxAudioStream, h=0x0x7fecf803a338, p=0x0x7fecf803a338, tot=0
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x131f6f00
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxAudioConfig, h=0x0x131f6f00, p=0x0x131f6f00, tot=1
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x131f6ea0
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxNamedProperties, h=0x0x131f6ea0, p=0x0x131f6ea0, tot=1
-[88686]: 21941ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:753 SetDisposing
-[88686]: 21941ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:1139 StopRecognitionAsync
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x7fecf8002fa0
-[88686]: 21941ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=CSpxAsyncOp<void>, h=0x0x7fecf8002fa0, p=0x0x7fecf8002fa0, tot=1
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1156 *** CSpxAudioStreamSession::StopRecognitionAsync kicked-off THREAD started ***
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1278 StopRecognizing
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1279 [0x131f6700]CSpxAudioStreamSession::StopRecognizing ...
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x131f6700]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 0/0 doesn't match
-[329499]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1381 [0x131f6700]CSpxAudioStreamSession::StopRecognizing: Now Idle/Idle already...
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1278 StopRecognizing
-[329499]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1156 *** CSpxAudioStreamSession::StopRecognitionAsync kicked-off THREAD stopped ***
-[655075]: 21941ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x000000131f6790; name='SPEECH-StopRecognitionTimeoutInSeconds'; value=''
-[655075]: 21941ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:809 WaitForIdle
-[655075]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:810 [0x131f6700]CSpxAudioStreamSession::WaitForIdle timeout: 10000 msec
-[655075]: 21941ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:815 CSpxAudioStreamSession::WaitForIdle m_cv.wait_for, m_sessionState: 0, m_recoKind: 0, m_sessionStarted: 1, m_sessionStopped: 1
-[655075]: 21941ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:809 WaitForIdle
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7fecf8002fa0
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=CSpxAsyncOp<void>, h=0x0x7fecf8002fa0, p=0x0x7fecf8002fa0, tot=0
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x131f7b50
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxRecognizer, h=0x0x131f7b50, p=0x0x131f7b50, tot=0
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x131f8010
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxNamedProperties, h=0x0x131f8010, p=0x0x131f8010, tot=0
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_ENTER:  recognizer.cpp:35 ~CSpxRecognizer
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_ENTER:  recognizer.cpp:394 TermDefaultSession
-[88686]: 21942ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:759 RemoveRecognizer
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x131f6740
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:196 Term
-[88686]: 21942ms SPX_TRACE_VERBOSE:  audio_stream_session.cpp:197 [0x131f6700]CSpxAudioStreamSession::Term:... 
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x131f6700]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 0/0 doesn't match
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:224 [0x131f6700]CSpxAudioStreamSession::Term: **NOT CALLED** StopPump[0x12f6b718] - state: 0
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x131f4f98
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_ENTER:  thread_service.cpp:45 Term
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_EXIT:  thread_service.cpp:45 Term
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:252 [0x131f6700]CSpxAudioStreamSession::CancelPendingSingleShot
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x12f6b718
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_session_shim.cpp:17 Term
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x13150c58
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fecf8001730
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x130c1fb0
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:46 [0x000000130c1fb0]CSpxAudioPump::~CSpxAudioPump
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fecfc002ec0
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fecfc0015a8
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fecfc001640
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_session_shim.cpp:17 Term
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fed0001ae90
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fed0001b4b0
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fecfc001450
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fecfc003480
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fecfc0017b8
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:97 Terminating CSpxUspRecoEngineAdapter...
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:98 Term: this=0x0x7fecfc001770
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 0/0 => 0/9998 USP-TERMINATING
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:102 Term: Terminating USP Connection (0x0x7fecfc01c218)
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter_retry.cpp:64 [0x7fecfc003460]CSpxUspRecoEngineAdapterRetry::AdapterDisconnected
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1506 [0x131f6700]CSpxAudioStreamSession::AdapterDisconnected
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1705 [0x131f6700]CSpxAudioStreamSession::FireEvent, recognizer is disposing, ignore events
-[88686]: 21942ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7fecfc01bc48
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_connection.cpp:146 ~CSpxUspConnection
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_connection.cpp:146 ~CSpxUspConnection
-[88686]: 21942ms SPX_DBG_TRACE_SCOPE_ENTER:  web_socket.cpp:221 ~CSpxWebSocket
-[88686]: 21942ms SPX_TRACE_INFO:  web_socket.cpp:425 Disconnect: start the close handshake.
-[88686]: 21942ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:165 Close
-[329499]: 21952ms SPX_TRACE_INFO: AZ_LOG_INFO:  uws_client.c:1496 on_underlying_io_bytes_received: Close frame received
-[329499]: 21952ms SPX_TRACE_INFO: AZ_LOG_INFO:  uws_client.c:1574 on_underlying_io_bytes_received: closing underlying io.
-[329499]: 21952ms SPX_TRACE_INFO: AZ_LOG_INFO:  uws_client.c:939 on_underlying_io_close_complete: uws_state: 6.
-[329499]: 21952ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:283 OnWebSocketClosed
-[329499]: 21952ms SPX_TRACE_INFO:  web_socket.cpp:1013 OnWebSocketClosed: context=0x7fecfc01cee0
-[329499]: 21952ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:283 OnWebSocketClosed
-[88686]: 21962ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:165 Close
-[88686]: 21962ms SPX_TRACE_INFO:  web_socket.cpp:427 Disconnect: isOpen: false
-[88686]: 21962ms SPX_TRACE_INFO:  web_socket.cpp:430 Disconnect: destroying uwsclient.
-[88686]: 21962ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:36 ~UwsWebSocket
-[88686]: 21962ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:36 ~UwsWebSocket
-[88686]: 21962ms SPX_DBG_TRACE_SCOPE_EXIT:  web_socket.cpp:221 ~CSpxWebSocket
-[88686]: 21962ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 0/9998 => 0/9999 USP-ZOMBIE
-[88686]: 21962ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:97 Terminating CSpxUspRecoEngineAdapter... Done!
-[88686]: 21962ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:55 ~CSpxUspRecoEngineAdapter
-[88686]: 21962ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:56 ~CSpxUspRecoEngineAdapter: this=0x0x7fecfc001770
-[88686]: 21962ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:55 ~CSpxUspRecoEngineAdapter
-[88686]: 21963ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x131f6f98
-[88686]: 21963ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:196 Term
-[88686]: 21963ms SPX_TRACE_VERBOSE:  audio_stream_session.cpp:167 [0x131f6700]CSpxAudioStreamSession::~CSpxAudioStreamSession
-[88686]: 21963ms SPX_DBG_TRACE_SCOPE_ENTER:  thread_service.cpp:45 Term
-[88686]: 21963ms SPX_DBG_TRACE_SCOPE_EXIT:  thread_service.cpp:45 Term
-[88686]: 21963ms SPX_DBG_TRACE_SCOPE_EXIT:  recognizer.cpp:394 TermDefaultSession
-[88686]: 21963ms SPX_DBG_TRACE_SCOPE_EXIT:  recognizer.cpp:35 ~CSpxRecognizer
-[88686]: 21963ms SPX_TRACE_WARNING: connection.cpp:40 GetRecognizer from connection: recognizer is no longer valid
-[88686]: 21963ms SPX_TRACE_WARNING: connection.cpp:40 GetRecognizer from connection: recognizer is no longer valid
-[88686]: 21963ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7fed08002880
-[88686]: 21963ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxConnection, h=0x0x7fed08002880, p=0x0x7fed08002880, tot=0
-[88686]: 21963ms SPX_DBG_TRACE_SCOPE_ENTER:  connection.cpp:26 ~CSpxConnection
-[88686]: 21963ms SPX_DBG_TRACE_SCOPE_EXIT:  connection.cpp:26 ~CSpxConnection
-[88686]: 21981ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x131cd650
-[88686]: 21981ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxAudioConfig, h=0x0x131cd650, p=0x0x131cd650, tot=0
-[88686]: 21986ms SPX_DBG_TRACE_FUNCTION:  memory_logger.cpp:130 Exit
-[88686]: 21986ms SPX_DBG_TRACE_FUNCTION:  resource_manager.cpp:103 ~CSpxResourceManager
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 0/0 => 1/0 USP-START
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:264 SetFormat: (0x0x7f980401b8a0)->PrepareFirstAudioReadyState()
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3202 ResetBeforeFirstAudio: this=0x0x7f980401b8a0 ... USP-RESET
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3051 PrepareCompressionCodec: Prepare compression codec.
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='SPEECH-Compression-Codec-Module'; value=''
+[409440]: 11874ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3113 PrepareFirstAudioReadyState: (0x0x7f980401b8a0)->PrepareCompressionCodec() result:        4. Sending the audio uncompressed
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='AZAC-SDK-PROGRAMMING-LANGUAGE'; value='Python'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x00000040207bd0; name='HttpHeader#User-agent'; value='SpeechSDK-Python/1.40.0 Linux Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 6.6.87.2-microsoft-standard-WSL2'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:357 UspInitialize: this=0x0x7f980401b8a0
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspCallbackWrapper' as '710381509'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='SessionId'; value='8eb7f688c39c4aa6a4dbdbcc7d213af3'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1875 GetScenarioCount: countSpeech=1; countIntent=0; countTranslation=0; countDialog=0, countConversationTranscriber=0, countConversationTranscriberV2=0, countMeetingTranscriber=0, countLanguageId=0
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='SPEECH-Endpoint'; value='wss://localhost:8443'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:535 SetUspEndpoint: Using Custom endpoint: wss://localhost:8443
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:784 SetUspEndpointDefaultSpeechService: Endpoint type: Speech.
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='SPEECH-Endpoint'; value='wss://localhost:8443'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x00000040207bd0; name='SPEECH-RecoLanguage'; value='en-us'
+[409440]: 11875ms SPX_TRACE_INFO:  usp_reco_engine_adapter.cpp:1110 SpeechServiceConnection_LanguageIdMode not set or has invalid value .
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:647 SetUspLanguageIdModeAndPriority: languageIdMode=0, languageIdPriority=0
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='SPEECH-RecoMode'; value='CONVERSATION'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:621 SetUspRecoMode: recoMode=1
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:608 SetUspEndpoint: Setting Websocket Polling interval to 10
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='SPEECH-SubscriptionKey'; value='[REDACTED]'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::FindPrefix: this=0x0x007f980401b8f8; name='User-agent'; value='SpeechSDK-Python/1.40.0 Linux Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 6.6.87.2-microsoft-standard-WSL2'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='SPEECH-ProxyHostBypass'; value=''
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='OPENSSL_DISABLE_CRL_CHECK'; value='true'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='AZAC-SDK-PROGRAMMING-LANGUAGE'; value='Python'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='AudioConfig_AudioSource'; value='Stream'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='AudioConfig_SampleRateForCapture'; value='16000'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='AudioConfig_BitsPerSampleForCapture'; value='16'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x007f980401b8f8; name='AudioConfig_NumberOfChannelsForCapture'; value='1'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxUspConnection' as '792041254'
+[409440]: 11875ms SPX_TRACE_INFO:  usp_connection.cpp:485 Connect: entering...
+[409440]: 11875ms SPX_TRACE_INFO:  usp_connection.cpp:502 Adding subscription key headers
+[409440]: 11875ms SPX_TRACE_INFO:  usp_connection.cpp:537 Set a user defined HTTP header 'User-agent':'SpeechSDK-Python/1.40.0 Linux Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 6.6.87.2-microsoft-standard-WSL2'
+[409440]: 11875ms SPX_TRACE_INFO:  usp_connection.cpp:552 connectionUrl=wss://localhost:8443/
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxTelemetry' as '151041793'
+[409440]: 11875ms SPX_DBG_TRACE_SCOPE_ENTER:  web_socket.cpp:216 CSpxWebSocket
+[409440]: 11875ms SPX_DBG_TRACE_SCOPE_EXIT:  web_socket.cpp:216 CSpxWebSocket
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxWebSocket' as '482598724'
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:31 UwsWebSocket
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:31 UwsWebSocket
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:43 Initialize
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:43 Initialize
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:221 SetRequestHeader
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:221 SetRequestHeader
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:221 SetRequestHeader
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:221 SetRequestHeader
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:221 SetRequestHeader
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:221 SetRequestHeader
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:215 SetOption
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:215 SetOption
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:215 SetOption
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:215 SetOption
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:215 SetOption
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:215 SetOption
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:215 SetOption
+[409440]: 11875ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:215 SetOption
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxPropertyBagImpl::SetStringValue: this=0x0x00000040207bd0; name='SPEECH-ConnectionUrl'; value='wss://localhost:8443/'
+[409440]: 11875ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:1163 speech.config {"context":{"system":{"version":"1.40.0","name":"SpeechSDK","build":"Linux-x64","lang":"Python"},"os":{"name":"Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64","version":"6.6.87.2-microsoft-standard-WSL2","platform":"Linux"},"audio":{"source":{"type":"Stream","model":"","samplerate":"16000","bitspersample":"16","channelcount":"1"}}}}
+[409440]: 11875ms SPX_TRACE_INFO:  usp_connection.cpp:787 Create requestId  for messageType 0
+[409440]: 11875ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:230 SetFormat
+[409440]: 11875ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:3396 InformAdapterSetFormatStarting
+[409440]: 11875ms SPX_TRACE_INFO:  web_socket.cpp:800 DoWork: open transport.
+[409440]: 11875ms SPX_TRACE_INFO:  web_socket.cpp:479 Start to open websocket. WebSocket: 0x401d690, wsio handle: 0x401dc50
+[409440]: 11875ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:149 Open
+[409440]: 11875ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:2027 create_openssl_instance by TLS_method.
+[409440]: 11877ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1849 load_system_store not implemented on this platform
+[409440]: 11877ms SPX_TRACE_INFO: AZ_LOG_INFO:  tlsio_openssl.c:1878 CRL check off, as requested.
+[409440]: 11881ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:149 Open
+[409440]: 11901ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:247 OnWebSocketOpened
+[409440]: 11901ms SPX_TRACE_INFO:  web_socket.cpp:879 Opening websocket completed. TransportRequest: 0x401d690, wsio handle: 0x401dc50, time: 2026-05-20T05:48:39.8987853Z
+[409440]: 11901ms SPX_TRACE_INFO:  usp_connection.cpp:902 TS:26, OnConnected: connection:0x401c990
+[409440]: 11901ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1497 [0x40207b40]CSpxAudioStreamSession::AdapterConnected
+[409440]: 11901ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:247 OnWebSocketOpened
+[409440]: 11902ms SPX_TRACE_VERBOSE:  web_socket.cpp:539 [0x0x7f980401d690] Web socket sending message. Time: 2026-05-20T05:48:39.8989559Z, TimeInQueue: 26ms, IsBinary: 0, Path: speech.config, Size:478 B
+[227015]: 11902ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1725 DispatchEvent task started...
+[409440]: 11902ms SPX_TRACE_VERBOSE:  web_socket.cpp:647 [0x0x7f980401d690] Web socket send message completed. Result: 0, SendTime: 0ms, IsBinary: 0, Path: speech.config, Size:478 B
+[227015]: 11902ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxConnectionEventArgs' as '189265475'
+[227015]: 11902ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x7f97f4000f18
+[227015]: 11902ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=ISpxConnectionEventArgs, h=0x0x7f97f4000f18, p=0x0x7f97f4000f18, tot=1
+[227015]: 11903ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7f97f4000f18
+[227015]: 11903ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxConnectionEventArgs, h=0x0x7f97f4000f18, p=0x0x7f97f4000f18, tot=0
+[227015]: 11903ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1725 DispatchEvent task complete!
+[409440]: 11911ms SPX_TRACE_VERBOSE:  usp_web_socket.cpp:205 USP message received. IsBinary=0, Path=turn.start, Size=141 B, Time=2026-05-20T05:48:39.9082744Z
+[409440]: 11911ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1513 [0x40207b40]CSpxAudioStreamSession::FireConnectionMessageReceived; path=turn.start
+[409440]: 11911ms SPX_TRACE_INFO:  usp_connection.cpp:993 Service originated request received with requestId: 00000000000000000000000000000001
+[409440]: 11911ms SPX_TRACE_INFO:  usp_connection.cpp:1008 Response Message: content type: application/json.
+[409440]: 11911ms SPX_TRACE_INFO:  usp_connection.cpp:1028 TS:36 Response Message: path: turn.start, size: 42.
+[81445]: 11975ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:1139 StopRecognitionAsync
+[81445]: 11975ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x40053480
+[81445]: 11975ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=CSpxAsyncOp<void>, h=0x0x40053480, p=0x0x40053480, tot=1
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1156 *** CSpxAudioStreamSession::StopRecognitionAsync kicked-off THREAD started ***
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1278 StopRecognizing
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1279 [0x40207b40]CSpxAudioStreamSession::StopRecognizing ...
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x40207b40]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 4/2 => 4/4
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1357 [0x40207b40]CSpxAudioStreamSession::StopRecognizing: We've been asked to stop whatever it is we're doing, while we're actively processing audio ...
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1360 [0x40207b40]CSpxAudioStreamSession::StopRecognizing: Now StoppingPump[0x3ff554e8] ...
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_pump.cpp:132 CSpxAudioPump::StopPump() ...
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:133 [0x400d2900]CSpxAudioPump::StopPump():
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:136 [0x400d2900]CSpxAudioPump::StopPump() ... mutex LOCKED
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:178 SetShouldWaitForPendingData: 0
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:545 [0x400d2900]CSpxAudioPump::WaitForPumpIdle() ... pre m_cv.wait_for()
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:136 Read: End of stream detected...
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:153 CSpxPushAudioInputStream::Read: totalBytesRead=0
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:464 [0x400d2900]CSpxAudioPump::PumpThread(): read frame duration: 100 ms => sending audio buffer size 0
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxBufferProperties' as '809583448'
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxReadWriteRingBuffer' as '956428994'
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxReadWriteRingBuffer' as '956428994'
+[509852]: 11975ms SPX_TRACE_VERBOSE:  audio_stream_session.cpp:538 Received audio chunk: time: 2026-05-20T05:48:39.9725141Z, size:0.
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:552 ProcessAudio: Non-acknowledged size = 0 bytes (0 msec)
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session_throttle_logic.cpp:164 [0x7f9804001330] m_bytesTransited = 0, unacknowledgedAudioDuration = 0 msec, packetAudioDelay = 0 msec
+[509852]: 11975ms SPX_TRACE_INFO:  audio_pump.cpp:479 [0x400d2900]CSpxAudioPump::PumpThread(): m_reader->Read() read ZERO (0) bytes... Indicating end of stream based input.
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:252 [0x400d2900]CSpxAudioPump::PumpThread(), checkAndChangeState: changing states as requested: 'Processing' => 'Idle'
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:265 [0x400d2900]CSpxAudioPump::PumpThread(): checkAndChangeState: about to exit the while loop, pre-SetFormat(nullptr)
+[509852]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:270 [0x400d2900]CSpxAudioPump::PumpThread(): checkAndChangeState: about to exit the while loop, post-SetFormat(nullptr)
+[509852]: 11975ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_pump.cpp:173 *** AudioPump THREAD stopped! ***
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:551 [0x400d2900]CSpxAudioPump::WaitForPumpIdle() ... post m_cv.wait_for(); state='Idle' (requestedState='Idle')
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  push_audio_input_stream.cpp:178 SetShouldWaitForPendingData: 1
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_pump.cpp:132 CSpxAudioPump::StopPump ... Done!
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1278 StopRecognizing
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1156 *** CSpxAudioStreamSession::StopRecognitionAsync kicked-off THREAD stopped ***
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:705 [0x40207b40]CSpxAudioStreamSession::ProcessNextAudio: Stopping pump, not processing data
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:467 [0x40207b40]CSpxAudioStreamSession::SetFormat: format == nullptr
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x40207b40]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 4/4 => 4/5
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:482 [0x40207b40]CSpxAudioStreamSession::SetFormat: Now WaitForAdapterCompletedSetFormatStop (from StoppingPump)...
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:3445 InformAdapterSetFormatStopping
+[409440]: 11975ms SPX_TRACE_INFO:  audio_stream_session.cpp:3456 [0x40207b40]CSpxAudioStreamSession::InformAdapterSetFormatStoppingProcessingAudio - Send zero size audio, processor=0x7f9804003cc8
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:316 ProcessAudio: (0x0x7f980401b8a0) Ignoring audio size=0 ... (audioState/uspState=1/0)
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3461 CSpxAudioStreamSession::InformAdapterSetFormatStopping m_adapterStreamingAudio: false
+[409440]: 11975ms SPX_TRACE_INFO:  audio_stream_session.cpp:3466 [0x40207b40]CSpxAudioStreamSession::InformAdapterSetFormatStoppingSetFormat(nullptr)
+[852763]: 11975ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040207bd0; name='SPEECH-StopRecognitionTimeoutInSeconds'; value=''
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:230 SetFormat
+[852763]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:809 WaitForIdle
+[852763]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:810 [0x40207b40]CSpxAudioStreamSession::WaitForIdle timeout: 10000 msec
+[852763]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:815 CSpxAudioStreamSession::WaitForIdle m_cv.wait_for, m_sessionState: 5, m_recoKind: 4, m_sessionStarted: 1, m_sessionStopped: 0
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:231 SetFormat: this=0x0x7f980401b8a0
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:233 SetFormat - pformat == nullptr
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 1/0 => 0/0 USP-DONE
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:270 SetFormat: (0x0x7f980401b8a0) site->AdapterCompletedSetFormatStop()
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:3497 *** CSpxAudioStreamSession::AdapterCompletedSetFormatStop kicked-off THREAD started ***
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3498 [0x40207b40]CSpxAudioStreamSession::AdapterCompletedSetFormatStop: kicked-off THREAD started ***
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x40207b40]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 4/5 doesn't match
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x40207b40]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 4/5 doesn't match
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x40207b40]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 4/5 doesn't match
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3583 [0x40207b40]CSpxAudioStreamSession::TryChangeState: recoKind/sessionState: 4/5 => 0/0
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1470 [0x40207b40]CSpxAudioStreamSession::FireSessionStoppedEvent: Firing SessionStopped event: SessionId: 8eb7f688c39c4aa6a4dbdbcc7d213af3
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1561 EnsureFireResultEvent
+[852763]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:815 CSpxAudioStreamSession::WaitForIdle m_cv.wait_for, m_sessionState: 0, m_recoKind: 0, m_sessionStarted: 1, m_sessionStopped: 0
+[409440]: 11975ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1562 [0x40207b40]CSpxAudioStreamSession::EnsureFireResultEvent
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1561 EnsureFireResultEvent
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:3497 *** CSpxAudioStreamSession::AdapterCompletedSetFormatStop kicked-off THREAD stopped ***
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:230 SetFormat
+[409440]: 11975ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:3445 InformAdapterSetFormatStopping
+[227015]: 11975ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1725 DispatchEvent task started...
+[227015]: 11975ms SPX_DBG_TRACE_VERBOSE:  resource_manager.cpp:133 Created 'CSpxSessionEventArgs' as '418547108'
+[227015]: 11976ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1725 DispatchEvent task complete!
+[852763]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:815 CSpxAudioStreamSession::WaitForIdle m_cv.wait_for, m_sessionState: 0, m_recoKind: 0, m_sessionStarted: 1, m_sessionStopped: 1
+[852763]: 11976ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:809 WaitForIdle
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x40053480
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=CSpxAsyncOp<void>, h=0x0x40053480, p=0x0x40053480, tot=0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7f97fc01c718
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxSpeechConfig, h=0x0x7f97fc01c718, p=0x0x7f97fc01c718, tot=0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7f97fc01c6b8
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxNamedProperties, h=0x0x7f97fc01c6b8, p=0x0x7f97fc01c6b8, tot=2
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7f980001de38
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxAudioStream, h=0x0x7f980001de38, p=0x0x7f980001de38, tot=0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7f980001d690
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxAudioConfig, h=0x0x7f980001d690, p=0x0x7f980001d690, tot=1
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7f980001d630
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxNamedProperties, h=0x0x7f980001d630, p=0x0x7f980001d630, tot=1
+[81445]: 11976ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:753 SetDisposing
+[81445]: 11976ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:1139 StopRecognitionAsync
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:110 CSpxHandleTable::TrackHandle p=0x0x40053480
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:116 CSpxHandleTable::TrackHandle class=CSpxAsyncOp<void>, h=0x0x40053480, p=0x0x40053480, tot=1
+[409440]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1156 *** CSpxAudioStreamSession::StopRecognitionAsync kicked-off THREAD started ***
+[409440]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:1278 StopRecognizing
+[409440]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1279 [0x40207b40]CSpxAudioStreamSession::StopRecognizing ...
+[409440]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x40207b40]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 0/0 doesn't match
+[409440]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1381 [0x40207b40]CSpxAudioStreamSession::StopRecognizing: Now Idle/Idle already...
+[409440]: 11976ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1278 StopRecognizing
+[409440]: 11976ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:1156 *** CSpxAudioStreamSession::StopRecognitionAsync kicked-off THREAD stopped ***
+[852763]: 11976ms SPX_DBG_TRACE_VERBOSE:  named_properties.h:479 ISpxNamedProperties::GetStringValue: this=0x0x00000040207bd0; name='SPEECH-StopRecognitionTimeoutInSeconds'; value=''
+[852763]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:809 WaitForIdle
+[852763]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:810 [0x40207b40]CSpxAudioStreamSession::WaitForIdle timeout: 10000 msec
+[852763]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:815 CSpxAudioStreamSession::WaitForIdle m_cv.wait_for, m_sessionState: 0, m_recoKind: 0, m_sessionStarted: 1, m_sessionStopped: 1
+[852763]: 11976ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:809 WaitForIdle
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x40053480
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=CSpxAsyncOp<void>, h=0x0x40053480, p=0x0x40053480, tot=0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x40208740
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxRecognizer, h=0x0x40208740, p=0x0x40208740, tot=0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x40208c00
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxNamedProperties, h=0x0x40208c00, p=0x0x40208c00, tot=0
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  recognizer.cpp:35 ~CSpxRecognizer
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  recognizer.cpp:394 TermDefaultSession
+[81445]: 11976ms SPX_DBG_TRACE_FUNCTION:  audio_stream_session.cpp:759 RemoveRecognizer
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x40207b80
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_stream_session.cpp:196 Term
+[81445]: 11976ms SPX_TRACE_VERBOSE:  audio_stream_session.cpp:197 [0x40207b40]CSpxAudioStreamSession::Term:... 
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:3593 [0x40207b40]CSpxAudioStreamSession::TryChangeState:  recoKind/sessionState: 0/0 doesn't match
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:224 [0x40207b40]CSpxAudioStreamSession::Term: **NOT CALLED** StopPump[0x3ff554e8] - state: 0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x40205a18
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  thread_service.cpp:45 Term
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_EXIT:  thread_service.cpp:45 Term
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:252 [0x40207b40]CSpxAudioStreamSession::CancelPendingSingleShot
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x3ff554e8
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  audio_session_shim.cpp:17 Term
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x3ff919a8
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f9800002d30
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x400d2900
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_pump.cpp:46 [0x000000400d2900]CSpxAudioPump::~CSpxAudioPump
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f980401b7d0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f9804003e88
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f9804003f20
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_session_shim.cpp:17 Term
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f97fc01b360
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f97fc01b4b0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f9804003cc0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f98040034e0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f980401b8e8
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:97 Terminating CSpxUspRecoEngineAdapter...
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:98 Term: this=0x0x7f980401b8a0
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 0/0 => 0/9998 USP-TERMINATING
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:102 Term: Terminating USP Connection (0x0x7f980401c9c8)
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter_retry.cpp:64 [0x7f98040034c0]CSpxUspRecoEngineAdapterRetry::AdapterDisconnected
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1506 [0x40207b40]CSpxAudioStreamSession::AdapterDisconnected
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  audio_stream_session.cpp:1705 [0x40207b40]CSpxAudioStreamSession::FireEvent, recognizer is disposing, ignore events
+[81445]: 11976ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x7f980401c4c8
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_connection.cpp:146 ~CSpxUspConnection
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_connection.cpp:146 ~CSpxUspConnection
+[81445]: 11976ms SPX_DBG_TRACE_SCOPE_ENTER:  web_socket.cpp:221 ~CSpxWebSocket
+[81445]: 11976ms SPX_TRACE_INFO:  web_socket.cpp:425 Disconnect: start the close handshake.
+[81445]: 11976ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:165 Close
+[409440]: 11987ms SPX_TRACE_INFO: AZ_LOG_INFO:  uws_client.c:1496 on_underlying_io_bytes_received: Close frame received
+[409440]: 11987ms SPX_TRACE_INFO: AZ_LOG_INFO:  uws_client.c:1574 on_underlying_io_bytes_received: closing underlying io.
+[409440]: 11987ms SPX_TRACE_INFO: AZ_LOG_INFO:  uws_client.c:939 on_underlying_io_close_complete: uws_state: 6.
+[409440]: 11987ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:283 OnWebSocketClosed
+[409440]: 11987ms SPX_TRACE_INFO:  web_socket.cpp:1013 OnWebSocketClosed: context=0x7f980401d690
+[409440]: 11987ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:283 OnWebSocketClosed
+[81445]: 11997ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:165 Close
+[81445]: 11997ms SPX_TRACE_INFO:  web_socket.cpp:427 Disconnect: isOpen: false
+[81445]: 11997ms SPX_TRACE_INFO:  web_socket.cpp:430 Disconnect: destroying uwsclient.
+[81445]: 11997ms SPX_TRACE_SCOPE_ENTER:  uws_web_socket.cpp:36 ~UwsWebSocket
+[81445]: 11997ms SPX_TRACE_SCOPE_EXIT:  uws_web_socket.cpp:36 ~UwsWebSocket
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_EXIT:  web_socket.cpp:221 ~CSpxWebSocket
+[81445]: 11997ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:3026 TryChangeState; audioState/uspState: 0/9998 => 0/9999 USP-ZOMBIE
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:97 Terminating CSpxUspRecoEngineAdapter... Done!
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_ENTER:  usp_reco_engine_adapter.cpp:55 ~CSpxUspRecoEngineAdapter
+[81445]: 11997ms SPX_DBG_TRACE_VERBOSE:  usp_reco_engine_adapter.cpp:56 ~CSpxUspRecoEngineAdapter: this=0x0x7f980401b8a0
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_EXIT:  usp_reco_engine_adapter.cpp:55 ~CSpxUspRecoEngineAdapter
+[81445]: 11997ms SPX_DBG_TRACE_VERBOSE:  create_object_helpers.h:78 SpxTerm: ptr=0x0x402077b8
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_EXIT:  audio_stream_session.cpp:196 Term
+[81445]: 11997ms SPX_TRACE_VERBOSE:  audio_stream_session.cpp:167 [0x40207b40]CSpxAudioStreamSession::~CSpxAudioStreamSession
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_ENTER:  thread_service.cpp:45 Term
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_EXIT:  thread_service.cpp:45 Term
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_EXIT:  recognizer.cpp:394 TermDefaultSession
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_EXIT:  recognizer.cpp:35 ~CSpxRecognizer
+[81445]: 11997ms SPX_TRACE_WARNING: connection.cpp:40 GetRecognizer from connection: recognizer is no longer valid
+[81445]: 11997ms SPX_TRACE_WARNING: connection.cpp:40 GetRecognizer from connection: recognizer is no longer valid
+[81445]: 11997ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x7f97f40027a0
+[81445]: 11997ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxConnection, h=0x0x7f97f40027a0, p=0x0x7f97f40027a0, tot=0
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_ENTER:  connection.cpp:26 ~CSpxConnection
+[81445]: 11997ms SPX_DBG_TRACE_SCOPE_EXIT:  connection.cpp:26 ~CSpxConnection
+[81445]: 12018ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:178 CSpxHandleTable::StopTracking(h) h=0x0x401de0d0
+[81445]: 12018ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:190 CSpxHandleTable::StopTracking(h) class=ISpxAudioConfig, h=0x0x401de0d0, p=0x0x401de0d0, tot=0
+[81445]: 12023ms SPX_DBG_TRACE_FUNCTION:  memory_logger.cpp:130 Exit
+[81445]: 12023ms SPX_DBG_TRACE_FUNCTION:  resource_manager.cpp:103 ~CSpxResourceManager
